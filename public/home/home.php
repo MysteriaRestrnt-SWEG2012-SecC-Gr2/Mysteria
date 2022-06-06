@@ -323,7 +323,6 @@ include '../../shared/CheckLogin.php';
         include '../../db/connectVar.php';
         $i = 0;
         $userId = $_SESSION['userID'];
-        echo $userId;
         $query = "SELECT * FROM feedback INNER JOIN registration WHERE feedback.user_id=registration.user_id ORDER BY  feedback.feedback_no DESC ";
         $result = mysqli_query($connectVariable, $query);
         while ($i < 6) {
