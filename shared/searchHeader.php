@@ -12,8 +12,8 @@
             <li><a href="../public/event/events.php#popup1">Event reservation </a></li><hr/>
             <li><a href="../public/reservation/cancelreservation.php">Cancel Table reservation </a></li><hr/>
             <li><a href="../public/event/cancel event reservation.php">Cancel Event reservation </a></li><hr/>
-            <li><a href="../public/delivery/delivery.php">Delivery </a></li><hr/>
-            <li><a href="../public/order/order2.php">Food Order </a></li><hr/>
+            <!-- <li><a href="../public/delivery/delivery.php">Delivery </a></li><hr/>
+            <li><a href="../public/order/order2.php">Food Order </a></li><hr/> -->
             <li><a href="cart.php">Cart:  <?php $var=$_SESSION['cartCount'];    echo $var;?></a></li><hr/>
             <li><a href="../public/settings/acc_sett.php">Account settings </a></li><hr/>
             <li><a href="logout.php">Log Out </a></li><hr/>
