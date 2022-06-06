@@ -28,7 +28,6 @@
                                <th>Allergic to</th>  
                                <th>Date</th> 
                                <th>Time</th> 
-                               <th>Quantity </th> 
                                <th>Phone Number </th> 
                                <th>Address </th> 
                                
@@ -44,7 +43,6 @@
                                     <td>'.$row["allergy"].'</td>
                                     <td>'.$row["date"].'</td>   
                                     <td>'.$row["time"].'</td>                                 
-                                    <td>'.$row["quantity"].'</td>
                                     <td>'.$row["phone1"].'</td>
                                     <td>'.$row["address"].'</td>
                                 </tr>  
