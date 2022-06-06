@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 06, 2022 at 11:00 PM
+-- Generation Time: Jun 06, 2022 at 11:34 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -41,12 +41,7 @@ INSERT INTO `cart` (`user_id`, `food_id`, `quantity`) VALUES
 (10, 1, 2),
 (10, 2, 2),
 (10, 42, 1),
-(10, 65, 1),
-(30, 1, 1),
-(31, 41, 1),
-(31, 47, 1),
-(31, 49, 1),
-(31, 54, 1);
+(10, 65, 1);
 
 -- --------------------------------------------------------
 
@@ -70,16 +65,12 @@ CREATE TABLE `delivery` (
 --
 
 INSERT INTO `delivery` (`delivery_id`, `user_id`, `date`, `orders`, `other`, `phone`, `phone1`, `address`) VALUES
-(1, 3, '2022-04-12', '0', 'onion', '+251', '977418627', 'bole arabsa'),
-(2, 3, '2022-04-12', '0', 'onion', '+251', '977418627', 'bole '),
-(3, 3, '2022-04-12', '0', 'onion', '+251', '977418627', 'bole '),
-(4, 3, '2022-05-12', 'hi', 'no', '+251', '978787878', 'addis'),
 (5, 1, '2022-05-13', 'hi', 'hi', '+251', '978787878', 'hi'),
-(6, 31, '2022-06-06', 'Chicken Grilled \r\n Cheese Burg', 'no', '+251', '978787878', 'addr'),
-(7, 31, '2022-06-06', 'Chicken Grilled \r\n Traditional', '', '+251', '978787878', 'cdfr'),
-(8, 31, '2022-06-07', 'Traditional all in one (fastin', '', '+251', '978787878', 'addr'),
-(9, 31, '2022-06-07', 'Vegiterian Pizza \r\n Shekla Tib', '', '+251', '978787878', 'asdad'),
-(10, 31, '2022-06-06', 'Beef Fillets with Portobello S', '', '+251', '978787878', 'ads');
+(6, NULL, '2022-06-06', 'Chicken Grilled \r\n Cheese Burg', 'no', '+251', '978787878', 'addr'),
+(7, NULL, '2022-06-06', 'Chicken Grilled \r\n Traditional', '', '+251', '978787878', 'cdfr'),
+(8, NULL, '2022-06-07', 'Traditional all in one (fastin', '', '+251', '978787878', 'addr'),
+(9, NULL, '2022-06-07', 'Vegiterian Pizza \r\n Shekla Tib', '', '+251', '978787878', 'asdad'),
+(10, NULL, '2022-06-06', 'Beef Fillets with Portobello S', '', '+251', '978787878', 'ads');
 
 -- --------------------------------------------------------
 
@@ -103,8 +94,8 @@ INSERT INTO `feedback` (`feedback_no`, `user_id`, `subject`, `date`, `feedback`)
 (3, 10, 'My Best Lunch', '2022-06-06', 'Food is an art that the artist is our mother. In my experiance of the mysteria resturant I think I have found what it test like. Completely Amazing.Food is an art that the artist is our mother.In my experiance of the mysteria resturant I think I have found what it test like. Completely Amazing. Food is an art that the artist is our mother. In my experiance of the mysteria resturant I think I have found what it test like. Completely Amazing. Food is an art that the artist is our mother.'),
 (4, 10, 'My Best Lunch', '2022-06-06', 'Food is an art that the artist is our mother. In my experiance of the mysteria resturant I think I have found what it test like. Completely Amazing.Food is an art that the artist is our mother.In my experiance of the mysteria resturant I think I have found what it test like. Completely Amazing. Food is an art that the artist is our mother. In my experiance of the mysteria resturant I think I have found what it test like. Completely Amazing. Food is an art that the artist is our mother.'),
 (5, 10, 'My Best Lunch', '2022-06-06', 'Food is an art that the artist is our mother. In my experiance of the mysteria resturant I think I have found what it test like. Completely Amazing.Food is an art that the artist is our mother.In my experiance of the mysteria resturant I think I have found what it test like. Completely Amazing. Food is an art that the artist is our mother. In my experiance of the mysteria resturant I think I have found what it test like. Completely Amazing. Food is an art that the artist is our mother.'),
-(7, 31, 'the food', '2022-06-06', 'my comment is that it is incredible'),
-(8, 31, 'the food', '2022-06-06', 'i Loved it here!'),
+(7, NULL, 'the food', '2022-06-06', 'my comment is that it is incredible'),
+(8, NULL, 'the food', '2022-06-06', 'i Loved it here!'),
 (9, 10, 'My Best Lunch', '2022-06-06', 'Food is an art that the artist is our mother. In my experiance of the mysteria resturant I think I have found what it test like. Completely Amazing.Food is an art that the artist is our mother.In my experiance of the mysteria resturant I think I have found what it test like. Completely Amazing. Food is an art that the artist is our mother. In my experiance of the mysteria resturant I think I have found what it test like. Completely Amazing. Food is an art that the artist is our mother.'),
 (10, 10, 'My Best Lunch', '2022-06-06', 'Food is an art that the artist is our mother. In my experiance of the mysteria resturant I think I have found what it test like. Completely Amazing.Food is an art that the artist is our mother.In my experiance of the mysteria resturant I think I have found what it test like. Completely Amazing. Food is an art that the artist is our mother. In my experiance of the mysteria resturant I think I have found what it test like. Completely Amazing. Food is an art that the artist is our mother.');
 
@@ -603,37 +594,6 @@ CREATE TABLE `ordersfood` (
   `address` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `ordersfood`
---
-
-INSERT INTO `ordersfood` (`order_id`, `user_id`, `food_ordered`, `allergy`, `date`, `time`, `phone`, `phone1`, `address`) VALUES
-(1, 10, 'Chili Lime Mushroom Tacos', '', '0000-00-00', '00:00:00', '', '', ''),
-(2, 10, 'Chili Lime Mushroom Tacos', '', '0000-00-00', '00:00:00', '', '', ''),
-(3, 10, 'Cheese Burger \r\n Chili Lime Mushroom Tacos \r\n ', '', '0000-00-00', '00:00:00', '', '', ''),
-(4, 10, 'Strawberry Salsa', 'Garlic  ', '2022-06-14', '08:02:00', '+251', '978787878', 'addr'),
-(5, 10, 'Strawberry Salsa', 'Garlic  ', '2022-06-14', '08:02:00', '+251', '978787878', 'addr'),
-(6, 10, 'Strawberry Salsa', '', '2022-06-08', '08:06:00', '+251', '978787878', 'address'),
-(7, 10, 'Strawberry Salsa', '', '2022-06-08', '08:06:00', '+251', '978787878', 'address'),
-(8, 10, 'Cocktail Meatballs \r\n Strawberry Salsa \r\n Cheese Burger \r\n ', '', '2022-06-29', '08:11:00', '+251', '978787878', 'bel'),
-(10, 31, 'Chicken Grilled \r\n Cheese Burger \r\n Traditional Tibs \r\n Traditional all in one (fasting) \r\n Traditional all in one (Non-fasting) \r\n ', 'Shrimp , Milk, Soy, Egg,  chili, meat', '2022-06-15', '04:41:00', '+251', '978787878', 'add'),
-(11, 31, 'Chicken Grilled \r\n Cheese Burger \r\n Traditional Tibs \r\n Traditional all in one (fasting) \r\n Traditional all in one (Non-fasting) \r\n ', 'Shrimp , Milk, Soy, Egg,  chili, meat', '2022-06-15', '04:41:00', '+251', '978787878', 'add'),
-(12, 31, 'Cocktail Meatballs \r\n Cheese Burger \r\n Doro Wot \r\n Traditional Tibs \r\n ', 'Egg,  ', '2022-06-15', '04:48:00', '+251', '978787878', 'newbb'),
-(13, 31, 'Cocktail Meatballs \r\n Cheese Burger \r\n Doro Wot \r\n ', 'Egg,  ', '2022-06-21', '04:50:00', '+251', '978787878', 'jjk'),
-(14, 31, 'Chicken Grilled \r\n Cheese Burger \r\n Doro Wot \r\n ', 'Egg,  ', '2022-06-22', '01:01:00', '+251', '978787878', 'egg'),
-(15, 31, 'Chicken Grilled \r\n Cheese Burger \r\n Doro Wot \r\n ', 'Egg,  ', '2022-06-22', '01:01:00', '+251', '978787878', 'egg'),
-(16, 31, 'Chicken Grilled \r\n Cheese Burger \r\n Doro Wot \r\n ', 'Egg,  ', '2022-06-22', '01:01:00', '+251', '978787878', 'egg'),
-(17, 31, 'Chicken Grilled \r\n Cheese Burger \r\n Doro Wot \r\n ', 'Egg,  ', '2022-06-22', '01:01:00', '+251', '978787878', 'egg'),
-(18, 31, 'Chicken Grilled \r\n Cheese Burger \r\n Doro Wot \r\n ', 'Egg,  ', '2022-06-22', '01:01:00', '+251', '978787878', 'egg'),
-(19, 31, 'Chicken Grilled \r\n Cheese Burger \r\n Doro Wot \r\n ', 'Egg,  ', '2022-06-22', '01:01:00', '+251', '978787878', 'egg'),
-(20, 31, 'Chicken Grilled \r\n Cheese Burger \r\n Doro Wot \r\n ', 'Egg, Coconut Oil,  chili', '2022-06-15', '02:02:00', '+251', '978787878', 'addregfyhy'),
-(21, 31, 'Chicken Grilled \r\n Cheese Burger \r\n Doro Wot \r\n ', 'Egg,  ', '2022-06-22', '05:09:00', '+251', '978787878', 'drsd'),
-(23, 31, 'Cocktail Meatballs', 'Egg,  ', '2022-06-14', '09:07:00', '+251', '978787878', 'tdg'),
-(24, 31, 'Cocktail Meatballs', 'Egg,  ', '2022-06-14', '09:07:00', '+251', '978787878', 'tdg'),
-(25, 31, 'Cocktail Meatballs', ' a', '2022-06-22', '09:09:00', '+251', '978787878', 'hfh'),
-(26, 31, 'Cocktail Meatballs', ' a', '2022-06-22', '09:09:00', '+251', '978787878', 'hfh'),
-(27, 31, 'Chicken Grilled \r\n Chicken Wrap \r\n Coffee \r\n ', ' ', '2022-06-28', '09:13:00', '+251', '978787878', 'asee');
-
 -- --------------------------------------------------------
 
 --
@@ -658,11 +618,8 @@ CREATE TABLE `registration` (
 
 INSERT INTO `registration` (`user_id`, `user_name`, `active_sessions`, `user_email`, `user_password`, `user_grp`, `email_verification_link`, `email_verified_at`, `code`) VALUES
 (1, 'Paulos Teshome', '', 'pt1234@gmail.com', '$2y$10$ylnRBlglwHBhoBqNH5LfquShA3g5uifl6Q.ml06x3B2UF/tVpybKy', 'not admin', '', NULL, 0),
-(2, 'Rediet Berhane', NULL, '.com', '$2y$10$8bCP.Rx98fHZfuX6Y0p.U.lGjpcYN23jmnpxbYdQ9XmLIdrcvB3Ge', 'admin', '', '2022-06-08 19:45:56', 0),
 (3, 'Meron Abera', NULL, 'Mer@gmail.com', '$2y$10$FWe9SSF2vOFBOIGg38GlJOvMfxnlhybaoJEPR5IGaAp2CZMddd8dy', 'not admin', '', NULL, 0),
 (6, 'pth', NULL, 'pt1234@gmail.com', '$2y$10$ylnRBlglwHBhoBqNH5LfquShA3g5uifl6Q.ml06x3B2UF/tVpybKy', 'not admin', '', NULL, 0),
-(7, 'ruth', '', 'ruth@gmail.com', '$2y$10$qXK/DndfXWxASlPRiA3/leuyGeMg/Y1mZZZb8sKhJpYrIbE.0BgTm', 'not admin', '', NULL, 0),
-(8, 'leulseged abebe', '', 'leulseged@gmail.com', '$2y$10$d0Ru2ZwNO5TaLhz6FcnJAegFzl//bVCWs9We7i1VhL2hDydS6QhsW', 'not admin', '', NULL, 0),
 (9, 'robel', NULL, 'rob@gmail.com', '$2y$10$x90hj/3ksJnV.H8YJAIyw.DcKp9QBP4yx3qj5gFgHildB9GrmPbIG', 'not admin', '', NULL, 0),
 (10, 'selome', NULL, 'rberhane383@gmail.com', '$2y$10$LI4Ghhs3DOOgJBDnitU1xeQeR7JZIuULs7/dC4L2KcVB2Inonl396', 'not admin', '', '2022-06-03 13:04:38', 0),
 (11, 'yared', NULL, 'yd@gmail.com', '$2y$10$H0WA0s8YBABkh91m6VKKzuYJyNFH1R9/St8VsC0vJK49DLtB69nnu', 'not admin', '', NULL, 0),
@@ -670,15 +627,7 @@ INSERT INTO `registration` (`user_id`, `user_name`, `active_sessions`, `user_ema
 (13, 'selam', NULL, 'selam@gmail.com', '$2y$10$UBLBwfrdnUaAzg9pMQPv2.EFIUnlxu4Zr0IQDJ4aN0Zq3fhKLVS86', 'not admin', '', NULL, 0),
 (14, 'trial3', NULL, 't@gmail.com', '$2y$10$ppuIdkUTxhKODsPRGqa.A.WcquZOp6OyE6BQSiKBLgWXQZU5iGL1i', 'not admin', '', NULL, 0),
 (16, 'Okitta Ongaye', NULL, 'ok@gmail.com', '$2y$10$qtIL/0DlOV3tSztt/fvAFelti/T4aDvRDqeuTzxz3HwnirD5VpEW.', 'admin', '', NULL, 0),
-(25, 'paul tesh', NULL, 'pteshome2136@gmail.com', '$2y$10$p2kqytaUZFDRYrdA5txeBu1zq8rTvUjARRvXslsinCLPOsGRvS8kq', 'not admin', 'a6e1f030a7c18cb50a6c8621e6f850c3', NULL, 0),
-(30, 'paul', NULL, 'pteshome2136@gmail.com', '$2y$10$UfdCzXyNa/M33YhgOK4.XeadtDkJjxaXzfeV.he4mmA0DzT6y89b6', 'not admin', 'c05afe6688a962888f97d57abaa6c138', '2022-06-06 00:28:27', 0),
-(31, 'newer', NULL, 'pteshome2136@gmail.com', '$2y$10$ODAnzLkbiFGHm6c47KQjjeIoOO2Zh2mD1luGAgtZJxOaQwx3ptOOu', 'not admin', '375f1f8c3c75e6aa6fb740aa3678be10', '2022-06-06 09:26:30', 3547),
-(32, 'neww', NULL, 'rob@gmail.com', '$2y$10$7lZ2S2mPddXllvTiHcBej.GV7CihzZBHE4mLboC7n3uVfLU2RhHPu', 'not admin', '1a2e0a73e4cad4c46900d5bb8e12b07d', NULL, 0),
-(33, 'user', NULL, 'paulman7792@gmail.com', '$2y$10$kJVRc0i1jDvOmzluRZFZWuV5sHXAZ74dketVvVFd9CDBPN7nmGj7a', 'not admin', '17011cf5fb3c536c8206be35212192de', NULL, 0),
-(34, 'neee', NULL, 'paulman7792@gmail.com', '$2y$10$0d.kDKnudYF4jx8UmbsrseX7MGpaCt3Pndjg6fULABXDyilP.49Ga', 'not admin', '77b8e7d9517150649780d387be5bd9f8', NULL, 0),
-(35, '213', NULL, 'pteshome2136@gmail.com', '$2y$10$fpkaJkl8z9ZyUXLvXUSH6us8hnBk20XDETQkLS1YEi2a8Lr/eADBG', 'not admin', '609a4fd01b787f25c593169fd214051c', NULL, 0),
-(36, '122', NULL, 'pteshome2136@gmail.com', '$2y$10$zxmZWXzaVTov/.xdl0QjauVEKm/ZBONzP7X8hvdNddSvMMOXpMFKS', 'not admin', '117ee73a87b3de6595aabbca557e0ab4', NULL, 0),
-(37, 'eae', NULL, 'paulman7792@gmail.com', '$2y$10$HtEHc0Y4/kphVMIiZuadkeWzwoFWBLb7N.cwEx3RkhuV8Pfs61a.C', 'not admin', 'cbaef5533e305cb8cce797ed8169a8e8', NULL, 0);
+(32, 'neww', NULL, 'rob@gmail.com', '$2y$10$7lZ2S2mPddXllvTiHcBej.GV7CihzZBHE4mLboC7n3uVfLU2RhHPu', 'not admin', '1a2e0a73e4cad4c46900d5bb8e12b07d', NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -700,15 +649,6 @@ CREATE TABLE `reservation` (
   `reserved` tinyint(1) NOT NULL,
   `room` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `reservation`
---
-
-INSERT INTO `reservation` (`reservation_id`, `user_id`, `date`, `time`, `occasion`, `number_of_people`, `phone1`, `phone2`, `payment_type`, `account_number`, `reserved`, `room`) VALUES
-(1, 32, '2022-06-08', '05:02:26', 'Bridal Shower', 88, '+251', '987654321', 'visa card', '444444444444555', 1, 1),
-(2, 32, '2022-06-08', '09:07:00', 'Bridal Shower', 66, '+251', '987654321', 'visa card', '444444444444555', 1, 2),
-(3, 32, '2022-06-07', '09:10:00', 'Bridal Shower', 99, '+251', '987654321', 'visa card', '444444444444555', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -732,24 +672,6 @@ CREATE TABLE `tablereservation` (
   `reserved` tinyint(1) NOT NULL,
   `table_number` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `tablereservation`
---
-
-INSERT INTO `tablereservation` (`reservation_id`, `user_id`, `date`, `time`, `position`, `table_type`, `car_parking`, `number_of_people`, `phone`, `phone1`, `payment_type`, `account_number`, `reserved`, `table_number`) VALUES
-(1, 1, '2022-06-08', '00:00:00', 'outdoor', 'mysteria', 'yes', 3, '+251', '666666666', 'visa card', '122345789087654', 1, 5),
-(2, 2, '2022-06-03', '00:00:00', 'outdoor', 'mysteria', 'yes', 3, '+251', '666666666', 'visa card', '122345789087654', 1, 9),
-(3, 9, '2022-06-21', '00:00:00', 'outdoor', 'mysteria', '', 4, '+251', '666666666', 'visa card', '122345789087654', 1, 9),
-(4, 10, '2022-06-07', '12:00:00', 'Outdoor', 'Mysteria Table', 'No', 2, '+251', '78787878', 'visa card', '122222222223334', 1, 1),
-(5, 10, '2003-06-22', '00:00:00', 'Outdoor', 'Mysteria Table', 'No', 2, '+251', '78787878', 'visa card', '122222222223334', 1, 13),
-(6, 10, '2003-06-22', '00:00:00', 'Outdoor', 'Dinner Table', 'No', 3, '+251', '78787878', 'visa card', '122222222223334', 1, 14),
-(7, 10, '2003-06-22', '00:00:00', 'Outdoor', 'Mysteria Table', 'No', 0, '+251', '', 'visa card', '', 1, 1),
-(8, 10, '2003-06-22', '00:00:00', 'Outdoor', 'Mysteria Table', 'No', 0, '+251', '', 'visa card', '', 1, 13),
-(9, 10, '2022-06-15', '00:00:00', 'Outdoor', 'Candle Table', 'No', 3, '+251', '978787878', 'visa card', '111111111111111', 0, 8),
-(10, 31, '2022-06-07', '12:47:49', 'Outdoor', 'Mysteria Table', 'No', 1, '+251', '978787878', 'visa card', '222222333443211', 0, 1),
-(11, 31, '2022-06-07', '02:56:00', 'Outdoor', 'Mysteria Table', 'No', 1, '+251', '978787878', 'visa card', '122222223334432', 0, 13),
-(12, 31, '2022-06-07', '03:07:00', 'Outdoor', 'Mysteria Table', 'No', 1, '+251', '978787878', 'visa card', '111111111111111', 0, 13);
 
 -- --------------------------------------------------------
 
@@ -902,7 +824,7 @@ ALTER TABLE `foodmenu`
 -- AUTO_INCREMENT for table `ordersfood`
 --
 ALTER TABLE `ordersfood`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `registration`
@@ -914,13 +836,13 @@ ALTER TABLE `registration`
 -- AUTO_INCREMENT for table `reservation`
 --
 ALTER TABLE `reservation`
-  MODIFY `reservation_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `reservation_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tablereservation`
 --
 ALTER TABLE `tablereservation`
-  MODIFY `reservation_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `reservation_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `table_info`
