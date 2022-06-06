@@ -1,4 +1,6 @@
 <?php 
+session_start();
+require_once '../../db/connectVar.php';
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
@@ -32,40 +34,54 @@ if(!$conn){
     die("The database is not connected");
 }
 
-   $insert = ("insert into registration(user_name,user_email,user_password, email_verification_link) 
-   values('$UserName', '$email','$hash', '$vkey')");
-  
-
-    mysqli_query($conn, $insert);
-    $link= "<a href= 'http://localhost/Mysteria/shared/mail/verify.php?key=".$email."&token=".$vkey."&user=".$UserName."'>Register Account</a>";
-
-    $mail->SMTPDebug = false;                             //Enable verbose debug output
-    $mail->isSMTP();                                                  //Send using SMTP
-    $mail->Host       = 'smtp.gmail.com';                            //Set the SMTP server to send through
-    $mail->SMTPAuth   = true;                                       //Enable SMTP authentication
-    $mail->Username   = 'restaurantmysteria@gmail.com';                   //SMTP username
-    $mail->Password   = '@Mysteria#2';                              //SMTP password
-    $mail->SMTPSecure = 'tls';                                   //Enable implicit TLS encryption
-    $mail->Port       = 587;  
-
-    //Recipients
-    $mail->setFrom('restaurantmysteria@gmail.com', 'MYSTERIA RESTAURANT');
-    $mail->addAddress($email, $UserName);     //Add a recipient
-    
-    //Content
-    $mail->isHTML(true);                                  //Set email format to HTML
-    $mail->Subject = 'Account verification';
-    $mail->Body = 'click on this link '.$link.'';
-    
-
-    if( $mail->send())
-    {
-        echo "Message has been sent";
+$sql= "SELECT * FROM registration WHERE user_name = '$UserName'";
+$insertionResult2 = mysqli_query($connectVariable, $sql);
+    if(mysqli_num_rows($insertionResult2)>0){
+        echo '<script type ="application/JavaScript"> alert ("username is taken"); window.location.href="signup.php"; </script>'; 
+    }else{
+        $insert = ("insert into registration(user_name,user_email,user_password, email_verification_link) 
+        values('$UserName', '$email','$hash', '$vkey')");
+       
+     
+         mysqli_query($conn, $insert);
+         $link= "<a href= 'http://localhost/Mysteria/shared/mail/verify.php?key=".$email."&token=".$vkey."&user=".$UserName."'>Register Account</a>";
+     
+         $mail->SMTPDebug = false;                             //Enable verbose debug output
+         $mail->isSMTP();                                                  //Send using SMTP
+         $mail->Host       = 'smtp.gmail.com';                            //Set the SMTP server to send through
+         $mail->SMTPAuth   = true;                                       //Enable SMTP authentication
+         $mail->Username   = 'restaurantmysteria@gmail.com';                   //SMTP username
+         $mail->Password   = '@Mysteria#2';                              //SMTP password
+         $mail->SMTPSecure = 'tls';                                   //Enable implicit TLS encryption
+         $mail->Port       = 587;  
+     
+         //Recipients
+         $mail->setFrom('restaurantmysteria@gmail.com', 'MYSTERIA RESTAURANT');
+         $mail->addAddress($email, $UserName);     //Add a recipient
+         
+         //Content
+         $mail->isHTML(true);                                  //Set email format to HTML
+         $mail->Subject = 'Account verification';
+         $mail->Body = 'click on this link to verify your account '.$link.'';
+         
+     
+         if( $mail->send())
+         {
+             $_SESSION['sent'] = <<<eol
+                     <span id="message" style="font-size:15px; color:green;">we have sent an email to verify your account</span>
+                     eol;
+                     header("Location: http://localhost/Mysteria/shared/signup.php");
+         }
+         else 
+         {
+         $_SESSION['sent'] = <<<eol
+         <span id="message" style="font-size:15px; color:green;">Message could not be sent. Mailer Error: {$mail->ErrorInfo}</span>
+         eol;
+         header("Location: http://localhost/Mysteria/shared/signup.php");
+             }
+        
     }
-    else 
-    {
-    echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
-        }
+   
     }
 
 
