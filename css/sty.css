@@ -1,0 +1,615 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    overflow: visible;
+    background-color: black;
+    color: white;
+    font-family: "Lato", sans-serif;
+    transition: background-color .5s;
+}
+
+ul {
+    list-style: none;
+}
+
+* a {
+    color: white;
+    text-decoration: none;
+}
+
+a:visited {
+    color: silver;
+}
+
+a:active {
+    color: rgb(102, 255, 153);
+}
+
+a:hover {
+    background-color: lightblue;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    text-shadow: 2px 2px;
+}
+
+input[type="text"] {
+    width: 50%;
+    padding: 14px 20px;
+    margin: 8px 0;
+    display: block;
+    margin-bottom: 10px;
+    background-color: yellow;
+}
+
+input[type="email"] {
+    width: 50%;
+    padding: 14px 20px;
+    margin: 8px 0;
+    display: block;
+    margin-bottom: 10px;
+    background-color: yellow;
+}
+
+input[type=submit] {
+    width: 10%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.col-1 {
+    width: 8.33%;
+}
+
+.col-2 {
+    width: 16.66%;
+}
+
+.col-3 {
+    width: 25%;
+}
+
+.col-4 {
+    width: 33.33%;
+}
+
+.col-5 {
+    width: 41.66%;
+}
+
+.col-6 {
+    width: 50%;
+}
+
+.col-7 {
+    width: 58.33%;
+}
+
+.col-8 {
+    width: 66.66%;
+}
+
+.col-9 {
+    width: 75%;
+}
+
+.col-10 {
+    width: 83.33%;
+}
+
+.col-11 {
+    width: 91.66%;
+}
+
+.col-12 {
+    width: 100%;
+}
+
+.row::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.row {
+    padding: 0;
+    margin: 0;
+}
+
+[class*="col-"] {
+    float: left;
+    padding: 15px;
+}
+
+@keyframes moving {
+    0% {
+        background-size: 110% 110%;
+    }
+    100% {
+        background-size: 100% 100%;
+    }
+}
+
+@keyframes logoMove {
+    0% {
+        width: 1px;
+        height: auto;
+    }
+    100% {
+        width: 125px;
+        height: auto;
+    }
+}
+
+@media only screen and (max-width:600px) {
+    .header nav#letters {
+        display: none;
+    }
+    .header nav#logos,
+    nav#logos span {
+        margin-left: 0px;
+        font-size: 100%;
+    }
+    #span {
+        position: relative;
+    }
+}
+
+@media only screen and (min-width:600.99px) {
+    .header nav#logos {
+        display: none;
+    }
+}
+
+header {
+    height: 205px;
+    margin: 0, 0, 10px, 0;
+    padding: 0, 0, 5px, 0;
+    background-color: rgba(1, 1, 1, .85);
+    border-radius: 0 0 10px 10px;
+    position: fixed;
+    top: 0%;
+    left: 0;
+    right: 0;
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    min-width: 100%;
+    max-height: 205px;
+    transition: margin-left .5s;
+    z-index: 1;
+}
+
+.header {
+    max-height: 200px;
+    height: 200px;
+    animation: moving 3s;
+    border-radius: 0 0 10px 10px;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 50%);
+    background-image: url("../resources/images/bar.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    transition: margin-left .5s;
+    padding: 10px;
+    margin-left: 0px;
+    /*background-color:rgb(80,80,80);*/
+}
+
+.header nav a {
+    color: white;
+    font-size: 140%;
+    font-family: Courier New, Lucida Console;
+    text-shadow: 1px 1px 2px silver;
+    margin-left: 5px;
+    border-radius: 20px;
+    padding: 7px;
+    min-width: 20%;
+}
+
+.header nav {
+    max-width: 50%;
+    width: 50%;
+    float: left;
+    padding: 20px;
+    margin-left: 5px;
+}
+
+.header nav a:hover {
+    color: black;
+    text-shadow: 1px 1px 2px black;
+    opacity: 0.5;
+    background-color: seashell;
+}
+
+a:link,
+a:visited {
+    background-color: orange;
+    color: white;
+    padding: 14px 25px;
+    text-align: center;
+    border-radius: 20px;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.headerShadow {
+    filter: drop-shadow(5px 5px 5px rgb(80, 80, 80));
+}
+
+#log {
+    top: 10px;
+    width: 125px;
+    height: auto;
+    max-width: 15%;
+    min-width: 5%;
+    Border-radius: 50%;
+    float: right;
+    background-color: rgba(210, 166, 121, 0.45);
+    margin-top: 30px;
+    margin-right: 25px;
+    box-shadow: 5px 5px 5px black;
+    position: relative;
+    animation: logoMove 3s;
+}
+
+#Mystlogo {
+    top: 10px;
+    position: relative;
+    max-width: 100%;
+    animation: logoMove 2.5s;
+}
+
+#search {
+    width: 80%;
+    height: 45%;
+    clip-path: polygon(0 0, 120% 100%, 0 100%);
+    position: absolute;
+    float: left;
+    top: 50%;
+    background: transparent;
+}
+
+#srchform {
+    position: relative;
+    top: 40%;
+    left: 2%;
+    padding: 0;
+    width: 70%;
+    color: #ffb03b;
+}
+
+#srchform #filtering select,
+input {
+    width: 20px;
+}
+
+#srchbtn {
+    position: relative;
+    top: 4px;
+    left: 2%;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(0, 0, 0, .8);
+    border: solid 2px;
+    border-radius: 50%;
+}
+
+#srchbtn:hover {
+    width: 43px;
+    height: 43px;
+    background-color: rgba(26, 26, 26, .8);
+    box-shadow: 5px 5px 5px rgb(77, 77, 77);
+    border-color: rgba(100, 100, 100, .8);
+    transition: 0.3s;
+}
+
+#srchbtn,
+#query {
+    max-width: 50%;
+    min-width: 20%;
+    box-shadow: 5px 5px 5px black;
+}
+
+#query {
+    position: relative;
+    width: 30%;
+    border-radius: 18px;
+    padding: 10px 10px;
+    margin: 5px 0;
+    outline: none;
+    background-color: rgba(0, 0, 0, .65);
+    color: seashell;
+    height: 35px;
+}
+
+#srchimg {
+    max-width: 80%;
+    margin: 0;
+    padding: 0;
+}
+
+#sideNav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    opacity: 0.85;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+#sideNav a {
+    padding: 8px 8px 8px 10px;
+    text-align: left;
+    text-decoration: none;
+    font-family: poppins;
+    font-size: 110%;
+    color: seashell;
+    display: block;
+    transition: 0.3s;
+}
+
+#sideNav a:hover {
+    color: black;
+    background-color: seashell;
+    opacity: 0.7;
+}
+
+#sideNav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 15px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+#sideNav hr {
+    text-align: left;
+    color: seashell;
+    opacity: 0.6;
+    width: 90%;
+    padding: 0;
+}
+
+@media screen and ((max-height:450px) or (max-width:600px)) {
+    #sideNav {
+        padding-top: 15px;
+    }
+    #sideNav a {
+        font-size: 70%;
+    }
+}
+
+section {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("../resources/images/white1.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 0.5;
+    margin-top: 205px;
+    padding: 2%;
+    overflow: hidden;
+}
+
+section div.form {
+    overflow: hidden;
+    margin-left: 25%;
+    border-radius: 10px;
+    padding: 10px;
+    max-width: 50%;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+section div.form #delivForm {
+    margin: auto;
+    border-radius: 10px;
+    padding: 10px;
+    max-width: 85%;
+    background-color: rgba(2, 2, 2, 0.7);
+}
+
+section div.form p {
+    text-align: none;
+    font-size: 2em;
+    font-family: Courier New, Lucida Console;
+    color: seashell;
+    background-color: rgba(1, 1, 1, 0.9);
+    border-radius: 20px;
+}
+
+section div.form label {
+    font-family: courier new;
+    font-size: 1em;
+    color: white;
+    line-height: 2;
+}
+
+section div.form input[type=text] {
+    width: 65%;
+    height: 20px;
+    margin-bottom: 2%;
+}
+
+section div.form input:focus,
+textarea:focus {
+    background-color: rgba(180, 180, 180, 0.7);
+    color: black;
+}
+
+section div.form input,
+textarea,
+select {
+    background-color: rgba(1, 1, 1, 0.5);
+    border: none;
+    border-bottom: solid 1px white;
+    color: silver;
+    padding: 5px;
+}
+
+section div.form #other {
+    width: 50%
+}
+
+section div.form textarea {
+    padding: 10px;
+    width: 90%;
+    height: 6em;
+    margin-bottom: 5%;
+}
+
+section div.form input[type=submit] {
+    border: groove 3px;
+    margin: 2% 25%;
+    width: 50%;
+    align: center;
+    background-color: rgb(1, 1, 1);
+    border-radius: 20px;
+    color: white;
+}
+
+section div.form input[type=submit]:hover {
+    background-color: white;
+    color: black;
+    border: solid black 3px;
+}
+
+.goto {
+    height: 40px;
+    background-color: rgba(1, 1, 1, 0.9);
+    position: relative;
+    padding: 5px;
+    color: white;
+    font-face: Lucida console;
+    overflow: hidden;
+    text-align: justify;
+    border-radius: 8px;
+}
+
+@media only screen and (max-width:767.9px) {
+    .goto {
+        width: 20%;
+        height: 20px;
+        font-size: 13px;
+        padding: 0;
+        left: 80%;
+    }
+}
+
+@media only screen and (min-width:768px) {
+    .goto {
+        width: 80%;
+        font-size: 23px;
+        right: -100%;
+    }
+    .goto:hover {
+        right: -40%;
+        transition: 0.5s;
+    }
+}
+
+footer {
+    text-align: center;
+    background-color: rgba(1, 1, 1, .85);
+    border-radius: 10px 10px 0 0;
+    color: #fff;
+    padding: 0px;
+    margin: 0px;
+    width: 101.5%;
+    overflow: none;
+    position: relative;
+    left: -1%;
+    right: -2%;
+    bottom: 0;
+    top: 80%;
+}
+
+.footer {
+    background-color: #24262b;
+    border-radius: 15px 15px 0 0;
+    clip-path: polygon(0 70%, 100% 0, 100% 100%, 0 100%);
+    width: 100%;
+    margin: 0;
+    background-image: url("../resources/images/deliveryhead.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    box-shadow: 5px 5px 5px rgb(80, 80, 80);
+}
+
+.footer p {
+    font-size: 20px;
+    padding: 1px;
+    margin: 1px;
+}
+
+.followLinks {
+    font-family: courier new;
+    float: right;
+    position: relative;
+    left: 15%;
+}
+
+footer a {
+    text-decoration: none;
+    color: white;
+}
+
+.followLinks a img {
+    width: 20px;
+    height: 20px;
+    z-index: 1;
+}
+
+.followLinks a img:hover {
+    position: relative;
+    width: 22px;
+    height: 22px;
+    box-shadow: 0px 0px 2px rgb(255, 255, 255);
+    transition: .3s;
+    z-index: 2;
+}
+
+#btmlinks {
+    height: 23px;
+    margin-left: 5%;
+}
+
+.feedback {
+    text-decoration: none;
+    font-family: courier new;
+    font-size: 20px;
+    text-align: left;
+}
+
+.feedback a:hover {
+    text-shadow: 0px 0px 2px rgb(255, 255, 255);
+}
+
+
+/*responsive*/
+
+@media(max-width: 767px) {
+    .footer.followLinks p {
+        font-size: 12px;
+    }
+}
+
+@media(max-width: 574px) {
+    .footer-col {
+        width: 100%;
+    }
+}
