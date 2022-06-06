@@ -1,0 +1,147 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    background-image: url("green.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: #01B1E7;
+    font-family: 'Montserrat', sans-serif;
+    overflow: hidden;
+}
+
+.left-strip,
+.right-strip {
+    position: absolute;
+    width: 1px;
+    height: 100vh;
+    background: #D35A08;
+    z-index: -1;
+}
+
+.left-strip {
+    left: 100px;
+}
+
+.right-strip {
+    right: 100px;
+}
+
+.middle-strip {
+    position: absolute;
+    width: 70px;
+    height: 2000px;
+    background: #12dab8;
+    top: 0;
+    bottom: 0;
+    left: 40px;
+    transform: rotate(40deg);
+    z-index: -1;
+    opacity: .2;
+    margin-top: -300px;
+}
+
+.logo {
+    line-height: 40px;
+    float: left;
+    margin: 1.2em 0 0 2.2em;
+}
+
+.logo img {
+    width: 30px;
+    height: auto;
+}
+
+.sidetext {
+    position: absolute;
+    left: -120px;
+    top: 50%;
+    transform: rotate(-90deg);
+}
+
+.sidetext ul {
+    list-style: none;
+}
+
+.sidetext ul li {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 500;
+    margin-left: 45px;
+}
+
+.social-media {
+    position: absolute;
+    right: -130px;
+    top: 50%;
+    transform: rotate(90deg);
+}
+
+.social-media ul {
+    list-style: none;
+}
+
+.social-media ul li {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 600;
+    margin-right: 60px;
+}
+
+.content {
+    position: absolute;
+    top: 25%;
+    left: 48%;
+    width: 40%;
+}
+
+@font-face {
+    font-family: 'KreepTown';
+    font-style: normal;
+    font-weight: normal;
+    src: local('KreepTown'), url('./assets/fonts/KreepTown.otf') format('truetype')
+}
+
+.content p {
+    margin: 0;
+    font-family: 'KreepTown';
+    font-size: 30px;
+}
+
+.content h1 {
+    margin: 0;
+    font-family: 'KreepTown';
+    font-size: 80px;
+    color: rgb(36, 105, 96);
+    letter-spacing: 3px;
+}
+
+.content button {
+    display: inline-block;
+    font-family: 'Montserrat';
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    border-radius: 50px;
+    margin-top: 20px;
+    outline: none;
+    cursor: pointer;
+    transition: .2s ease-in-out;
+}
+
+.btn-2 {
+    background: transparent;
+    color: #D35A08;
+    padding: 20px 35px;
+    border: 1px solid #D35A08;
+}
+
+.btn-2:hover {
+    background: #01B1E7;
+    border: 1px solid #01B1E7;
+    color: #000F18;
+}
