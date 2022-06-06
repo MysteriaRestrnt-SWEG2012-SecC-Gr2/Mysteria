@@ -1,2 +1,1 @@
-# phase-3
-the last phase of IP project
+all necessary information has been attached on the readme.docx file
