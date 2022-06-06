@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 07, 2022 at 12:40 AM
+-- Generation Time: Jun 07, 2022 at 12:49 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -41,7 +41,8 @@ INSERT INTO `cart` (`user_id`, `food_id`, `quantity`) VALUES
 (10, 1, 2),
 (10, 2, 2),
 (10, 42, 1),
-(10, 65, 1);
+(10, 65, 1),
+(16, 41, 2);
 
 -- --------------------------------------------------------
 
@@ -163,7 +164,7 @@ INSERT INTO `foodmenu` (`food_id`, `food_name`, `food_category`, `imagePath`, `i
 (38, 'Juice Plus', 'Drink', '../../resources/images/juicePlus.jpeg', '', 100, '2022-03-12', 10),
 (39, 'Tej', 'Drink', '../../resources/images/tej.jpeg', '', 70, '2022-03-12', 10),
 (40, 'Chicken Wrap', 'Meatatarian', '../../resources/images/chicken_wrap.jpg', 'chicken breasts, garlic herb cheese,tortilas,lettuce leaves, tomatoes,cucumber,carrot.', 150, '2022-03-13', 10),
-(41, 'Chicken Grilled', 'Meatatarian', '../../resources/images/Roast-Chicken.jpg', 'chicken, all purpose flour,garlic salt,paprika, pepper,poultry seasoning,eggs,oil.', 265, '2022-03-13', 9),
+(41, 'Chicken Grilled', 'Meatatarian', '../../resources/images/Roast-Chicken.jpg', 'chicken, all purpose flour,garlic salt,paprika, pepper,poultry seasoning,eggs,oil.', 265, '2022-03-13', 7),
 (42, 'Cheese Burger', 'Meatatarian', '../../resources/images/grilled cheese burger.jpg', 'Beef, Worcestershire sauce, garlic powder,pepper, olive oil,butter,onion, American Cheese,bread.', 177, '2022-03-13', 9),
 (43, 'Doro Wot', 'Meatatarian', '../../resources/images/Doro Wet.jpg', 'Chicken, Red onion, Garlic, Pepper, Egg, Butter.', 315, '2022-03-13', 10),
 (44, 'Traditional Tibs', 'Meatatarian', '../../resources/images/Tibs.jpg', 'Beef, Tomato, Red onion, Garlic, Butter, Rosemary.', 315, '2022-03-13', 10),
@@ -525,6 +526,8 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`order_id`, `food_id`, `quantity`) VALUES
+(1, 41, 1),
+(1, 43, 1),
 (3, 42, 1),
 (3, 62, 5),
 (6, 2, 2),
@@ -597,6 +600,13 @@ CREATE TABLE `ordersfood` (
   `phone1` varchar(10) NOT NULL,
   `address` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `ordersfood`
+--
+
+INSERT INTO `ordersfood` (`order_id`, `user_id`, `food_ordered`, `allergy`, `date`, `time`, `phone`, `phone1`, `address`) VALUES
+(1, 16, 'Chicken Grilled \r\n Doro Wot \r\n ', 'Garlic ,  ', '2022-06-07', '02:44:00', '+251', '978787878', 'addis');
 
 -- --------------------------------------------------------
 
@@ -836,7 +846,7 @@ ALTER TABLE `foodmenu`
 -- AUTO_INCREMENT for table `ordersfood`
 --
 ALTER TABLE `ordersfood`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `registration`
