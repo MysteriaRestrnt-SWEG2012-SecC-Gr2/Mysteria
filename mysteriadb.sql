@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 06, 2022 at 11:34 PM
+-- Generation Time: Jun 07, 2022 at 12:40 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -70,7 +70,8 @@ INSERT INTO `delivery` (`delivery_id`, `user_id`, `date`, `orders`, `other`, `ph
 (7, NULL, '2022-06-06', 'Chicken Grilled \r\n Traditional', '', '+251', '978787878', 'cdfr'),
 (8, NULL, '2022-06-07', 'Traditional all in one (fastin', '', '+251', '978787878', 'addr'),
 (9, NULL, '2022-06-07', 'Vegiterian Pizza \r\n Shekla Tib', '', '+251', '978787878', 'asdad'),
-(10, NULL, '2022-06-06', 'Beef Fillets with Portobello S', '', '+251', '978787878', 'ads');
+(10, NULL, '2022-06-06', 'Beef Fillets with Portobello S', '', '+251', '978787878', 'ads'),
+(11, 46, '2022-06-07', 'Black Bean and Rice \r\n Chili L', '', '+251', '978787878', 'address');
 
 -- --------------------------------------------------------
 
@@ -94,10 +95,11 @@ INSERT INTO `feedback` (`feedback_no`, `user_id`, `subject`, `date`, `feedback`)
 (3, 10, 'My Best Lunch', '2022-06-06', 'Food is an art that the artist is our mother. In my experiance of the mysteria resturant I think I have found what it test like. Completely Amazing.Food is an art that the artist is our mother.In my experiance of the mysteria resturant I think I have found what it test like. Completely Amazing. Food is an art that the artist is our mother. In my experiance of the mysteria resturant I think I have found what it test like. Completely Amazing. Food is an art that the artist is our mother.'),
 (4, 10, 'My Best Lunch', '2022-06-06', 'Food is an art that the artist is our mother. In my experiance of the mysteria resturant I think I have found what it test like. Completely Amazing.Food is an art that the artist is our mother.In my experiance of the mysteria resturant I think I have found what it test like. Completely Amazing. Food is an art that the artist is our mother. In my experiance of the mysteria resturant I think I have found what it test like. Completely Amazing. Food is an art that the artist is our mother.'),
 (5, 10, 'My Best Lunch', '2022-06-06', 'Food is an art that the artist is our mother. In my experiance of the mysteria resturant I think I have found what it test like. Completely Amazing.Food is an art that the artist is our mother.In my experiance of the mysteria resturant I think I have found what it test like. Completely Amazing. Food is an art that the artist is our mother. In my experiance of the mysteria resturant I think I have found what it test like. Completely Amazing. Food is an art that the artist is our mother.'),
-(7, NULL, 'the food', '2022-06-06', 'my comment is that it is incredible'),
-(8, NULL, 'the food', '2022-06-06', 'i Loved it here!'),
+(7, 11, 'the food', '2022-06-06', 'my comment is that it is incredible'),
+(8, 11, 'the food', '2022-06-06', 'i Loved it here!'),
 (9, 10, 'My Best Lunch', '2022-06-06', 'Food is an art that the artist is our mother. In my experiance of the mysteria resturant I think I have found what it test like. Completely Amazing.Food is an art that the artist is our mother.In my experiance of the mysteria resturant I think I have found what it test like. Completely Amazing. Food is an art that the artist is our mother. In my experiance of the mysteria resturant I think I have found what it test like. Completely Amazing. Food is an art that the artist is our mother.'),
-(10, 10, 'My Best Lunch', '2022-06-06', 'Food is an art that the artist is our mother. In my experiance of the mysteria resturant I think I have found what it test like. Completely Amazing.Food is an art that the artist is our mother.In my experiance of the mysteria resturant I think I have found what it test like. Completely Amazing. Food is an art that the artist is our mother. In my experiance of the mysteria resturant I think I have found what it test like. Completely Amazing. Food is an art that the artist is our mother.');
+(10, 10, 'My Best Lunch', '2022-06-06', 'Food is an art that the artist is our mother. In my experiance of the mysteria resturant I think I have found what it test like. Completely Amazing.Food is an art that the artist is our mother.In my experiance of the mysteria resturant I think I have found what it test like. Completely Amazing. Food is an art that the artist is our mother. In my experiance of the mysteria resturant I think I have found what it test like. Completely Amazing. Food is an art that the artist is our mother.'),
+(11, 46, 'the ingredients', '2022-06-07', 'exquisite simply!');
 
 -- --------------------------------------------------------
 
@@ -502,7 +504,9 @@ INSERT INTO `ordered_delivery` (`delivery_id`, `food_id`, `quantity`) VALUES
 (9, 50, 1),
 (9, 51, 1),
 (10, 52, 1),
-(10, 53, 1);
+(10, 53, 1),
+(11, 61, 1),
+(11, 62, 1);
 
 -- --------------------------------------------------------
 
@@ -626,8 +630,16 @@ INSERT INTO `registration` (`user_id`, `user_name`, `active_sessions`, `user_ema
 (12, 'aman', NULL, 'am@gmail.com', '$2y$10$g/2HY5p3bB3.1bO2rCguj.0O2DoYWr.E/gAh4n5xjJofIr7XzISJm', 'not admin', '', NULL, 0),
 (13, 'selam', NULL, 'selam@gmail.com', '$2y$10$UBLBwfrdnUaAzg9pMQPv2.EFIUnlxu4Zr0IQDJ4aN0Zq3fhKLVS86', 'not admin', '', NULL, 0),
 (14, 'trial3', NULL, 't@gmail.com', '$2y$10$ppuIdkUTxhKODsPRGqa.A.WcquZOp6OyE6BQSiKBLgWXQZU5iGL1i', 'not admin', '', NULL, 0),
-(16, 'Okitta Ongaye', NULL, 'ok@gmail.com', '$2y$10$qtIL/0DlOV3tSztt/fvAFelti/T4aDvRDqeuTzxz3HwnirD5VpEW.', 'admin', '', NULL, 0),
-(32, 'neww', NULL, 'rob@gmail.com', '$2y$10$7lZ2S2mPddXllvTiHcBej.GV7CihzZBHE4mLboC7n3uVfLU2RhHPu', 'not admin', '1a2e0a73e4cad4c46900d5bb8e12b07d', NULL, 0);
+(16, 'Okitta Ongaye', 'atcrj0i4jn41pj4pt5k6an70m8', 'ok@gmail.com', '$2y$10$qtIL/0DlOV3tSztt/fvAFelti/T4aDvRDqeuTzxz3HwnirD5VpEW.', 'admin', '', '2022-06-07 22:34:05', 0),
+(32, 'neww', NULL, 'rob@gmail.com', '$2y$10$7lZ2S2mPddXllvTiHcBej.GV7CihzZBHE4mLboC7n3uVfLU2RhHPu', 'not admin', '1a2e0a73e4cad4c46900d5bb8e12b07d', NULL, 3778),
+(38, 'newer', NULL, 'pteshome2136@gmail.com', '$2y$10$zOacbt4E.7/8t3lpqgCp..mwEXJAkdaWaZPk3KvG8lGWRWFY4tOEu', 'not admin', 'd5092d1d0eff2e1b1f82ab7d6378a584', NULL, 0),
+(40, 'newest', NULL, 'pteshome2136@gmail.com', '$2y$10$5X2r4IG4EJ2rQcd6gdhGre8WxrkFsTbB5xw3OlEkv.AypYC6NgkUy', 'not admin', 'd334f280e853e8ded31660381e88ae40', NULL, 0),
+(41, 'me', NULL, 'rberhane383@gmail.com', '$2y$10$WoqWxC3qgMc0NBMYn17cEOzK1tyw9Ok6oXjlfj7Kxqtw0zaGIERBi', 'not admin', 'cc6d85046496746a411567c883b3a715', NULL, 0),
+(42, 'newwww', NULL, 'rberhane383@gmail.com', '$2y$10$vuzHBo.6IVgNMI4rAL3jEOaNkESVTO7yi8JctEciJWFQFROq6rY5W', 'not admin', '176b62c3716da0c9064906ba519e0f96', NULL, 0),
+(43, 'ssss', NULL, 'rberhane383@gmail.com', '$2y$10$UKmrGaf1g8m4LZyUv01fau0shvtpaPVOmS3aMJHDVi2yyNDeY7YiS', 'not admin', '8103292f50e56c08ea7ea3177d4727a1', NULL, 0),
+(45, 'pttt', NULL, 'rberhane383@gmail.com', '$2y$10$wY50cU4aTKuHOdxzEDHfgugkPnWiXXlV.2JozeIn9DpxCPfgFD.jG', 'not admin', 'caa947475fecdc7545b3b532d3b34441', NULL, 0),
+(46, 'paul tesh', NULL, 'pteshome2136@gmail.com', '$2y$10$47h5cf4ngiGzcrEE072dgOEfEwNdv2OSDWRdkeG6dDU4bgOlJ3gZW', 'not admin', 'f90fa0e50e66459629738ce8dc1ad6ea', '2022-06-06 21:20:04', 2913),
+(47, 'Rediet Berhane', NULL, 'rberhane383@gmail.com', '$2y$10$AI4DSM//Z.42o1vcln7Mg.6lLFGHdQ4umx2FipshBh4Q4LoWkuWdq', 'admin', 'zxwfa0e50e66459629738ceewc1ad6ea', '2022-06-04 22:40:08', 0);
 
 -- --------------------------------------------------------
 
@@ -806,13 +818,13 @@ ALTER TABLE `table_info`
 -- AUTO_INCREMENT for table `delivery`
 --
 ALTER TABLE `delivery`
-  MODIFY `delivery_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `delivery_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `feedback`
 --
 ALTER TABLE `feedback`
-  MODIFY `feedback_no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `feedback_no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `foodmenu`
@@ -830,7 +842,7 @@ ALTER TABLE `ordersfood`
 -- AUTO_INCREMENT for table `registration`
 --
 ALTER TABLE `registration`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT for table `reservation`
