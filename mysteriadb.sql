@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 07, 2022 at 11:27 AM
+-- Generation Time: Jun 07, 2022 at 02:10 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -33,17 +33,6 @@ CREATE TABLE `cart` (
   `quantity` int(11) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `cart`
---
-
-INSERT INTO `cart` (`user_id`, `food_id`, `quantity`) VALUES
-(10, 1, 2),
-(10, 2, 2),
-(10, 42, 1),
-(10, 65, 1),
-(16, 41, 2);
-
 -- --------------------------------------------------------
 
 --
@@ -66,13 +55,7 @@ CREATE TABLE `delivery` (
 --
 
 INSERT INTO `delivery` (`delivery_id`, `user_id`, `date`, `orders`, `other`, `phone`, `phone1`, `address`) VALUES
-(5, 1, '2022-05-13', 'hi', 'hi', '+251', '978787878', 'hi'),
-(6, NULL, '2022-06-06', 'Chicken Grilled \r\n Cheese Burg', 'no', '+251', '978787878', 'addr'),
-(7, NULL, '2022-06-06', 'Chicken Grilled \r\n Traditional', '', '+251', '978787878', 'cdfr'),
-(8, NULL, '2022-06-07', 'Traditional all in one (fastin', '', '+251', '978787878', 'addr'),
-(9, NULL, '2022-06-07', 'Vegiterian Pizza \r\n Shekla Tib', '', '+251', '978787878', 'asdad'),
-(10, NULL, '2022-06-06', 'Beef Fillets with Portobello S', '', '+251', '978787878', 'ads'),
-(11, 46, '2022-06-07', 'Black Bean and Rice \r\n Chili L', '', '+251', '978787878', 'address');
+(12, 47, '2022-06-07', 'Cocktail Meatballs', '', '+251', '978787878', 'addis ababa');
 
 -- --------------------------------------------------------
 
@@ -93,14 +76,9 @@ CREATE TABLE `feedback` (
 --
 
 INSERT INTO `feedback` (`feedback_no`, `user_id`, `subject`, `date`, `feedback`) VALUES
-(3, 10, 'My Best Lunch', '2022-06-06', 'Food is an art that the artist is our mother. In my experiance of the mysteria resturant I think I have found what it test like. Completely Amazing.Food is an art that the artist is our mother.In my experiance of the mysteria resturant I think I have found what it test like. Completely Amazing. Food is an art that the artist is our mother. In my experiance of the mysteria resturant I think I have found what it test like. Completely Amazing. Food is an art that the artist is our mother.'),
-(4, 10, 'My Best Lunch', '2022-06-06', 'Food is an art that the artist is our mother. In my experiance of the mysteria resturant I think I have found what it test like. Completely Amazing.Food is an art that the artist is our mother.In my experiance of the mysteria resturant I think I have found what it test like. Completely Amazing. Food is an art that the artist is our mother. In my experiance of the mysteria resturant I think I have found what it test like. Completely Amazing. Food is an art that the artist is our mother.'),
 (5, 10, 'My Best Lunch', '2022-06-06', 'Food is an art that the artist is our mother. In my experiance of the mysteria resturant I think I have found what it test like. Completely Amazing.Food is an art that the artist is our mother.In my experiance of the mysteria resturant I think I have found what it test like. Completely Amazing. Food is an art that the artist is our mother. In my experiance of the mysteria resturant I think I have found what it test like. Completely Amazing. Food is an art that the artist is our mother.'),
-(7, 11, 'the food', '2022-06-06', 'my comment is that it is incredible'),
-(8, 11, 'the food', '2022-06-06', 'i Loved it here!'),
 (9, 10, 'My Best Lunch', '2022-06-06', 'Food is an art that the artist is our mother. In my experiance of the mysteria resturant I think I have found what it test like. Completely Amazing.Food is an art that the artist is our mother.In my experiance of the mysteria resturant I think I have found what it test like. Completely Amazing. Food is an art that the artist is our mother. In my experiance of the mysteria resturant I think I have found what it test like. Completely Amazing. Food is an art that the artist is our mother.'),
-(10, 10, 'My Best Lunch', '2022-06-06', 'Food is an art that the artist is our mother. In my experiance of the mysteria resturant I think I have found what it test like. Completely Amazing.Food is an art that the artist is our mother.In my experiance of the mysteria resturant I think I have found what it test like. Completely Amazing. Food is an art that the artist is our mother. In my experiance of the mysteria resturant I think I have found what it test like. Completely Amazing. Food is an art that the artist is our mother.'),
-(11, 46, 'the ingredients', '2022-06-07', 'exquisite simply!');
+(10, 10, 'My Best Lunch', '2022-06-06', 'Food is an art that the artist is our mother. In my experiance of the mysteria resturant I think I have found what it test like. Completely Amazing.Food is an art that the artist is our mother.In my experiance of the mysteria resturant I think I have found what it test like. Completely Amazing. Food is an art that the artist is our mother. In my experiance of the mysteria resturant I think I have found what it test like. Completely Amazing. Food is an art that the artist is our mother.');
 
 -- --------------------------------------------------------
 
@@ -168,24 +146,24 @@ INSERT INTO `foodmenu` (`food_id`, `food_name`, `food_category`, `imagePath`, `i
 (42, 'Cheese Burger', 'Meatatarian', '../../resources/images/grilled cheese burger.jpg', 'Beef, Worcestershire sauce, garlic powder,pepper, olive oil,butter,onion, American Cheese,bread.', 177, '2022-03-13', 9),
 (43, 'Doro Wot', 'Meatatarian', '../../resources/images/Doro Wet.jpg', 'Chicken, Red onion, Garlic, Pepper, Egg, Butter.', 315, '2022-03-13', 10),
 (44, 'Traditional Tibs', 'Meatatarian', '../../resources/images/Tibs.jpg', 'Beef, Tomato, Red onion, Garlic, Butter, Rosemary.', 315, '2022-03-13', 10),
-(45, 'Traditional all in one (fasting)', 'Meatatarian', '../../resources/images/ye tsom.jpeg', 'Vegies, Cereals, Rice, Soups.', 153, '2022-03-13', 10),
-(46, 'Traditional all in one (Non-fasting)', 'Meatatarian', '../../resources/images/ye fesk.jpg', 'Beef (all kind), Egg.', 215, '2022-03-13', 10),
-(47, 'Crispy Fried Chicken', 'Meatatarian', '../../resources/images/Crispy-Fried-Chicken.jpg', 'Barbeque sause,chicken,pepper, onion,cheese, Tomato Sauce.', 250, '2022-03-13', 9),
-(48, 'BBQ Chicken Pizza', 'Meatatarian', '../../resources/images/pizza.jpg', 'Flour, Mozzarella Cheese, Tomato Sauce.', 250, '2022-03-13', 10),
-(49, 'Margheritta Pizza', 'Meatatarian', '../../resources/images/BBQ-Ranch-Chicken-Pizza.jpg', 'yeast,olive oil,sugar, bread flour,basil leaves,oregano, mozzarella cheese,pepper,tomatoes.', 250, '2022-03-13', 9),
-(50, 'Vegiterian Pizza', 'Meatatarian', '../../resources/images/pizza.png', 'red peppers,mushroom,tomatoes, black olives,mozzarella, garlic,spinach.', 110, '2022-03-13', 10),
-(51, 'Shekla Tibs', 'Meatatarian', '../../resources/images/tibs (2).jpg', 'Beef, Red onion, Garlic, Pepper, Injera, Bread.', 110, '2022-03-13', 10),
-(52, 'Beef Fillets with Portobello Sauce', 'Meatatarian', '../../resources/images/Beef-Fillets-with-Portobello-Sauce.jpg', 'Flour, Mozzarella Cheese, Tomato Sauce.', 110, '2022-03-13', 10),
-(53, 'Crispy Beer Battered Fish', 'Meatatarian', '../../resources/images/Crispy-Beer-Battered-Fish.jpg', 'Cod fillets, Cornstarch, Baking powder, Paprika, Creole seasoning.', 350, '2022-03-13', 10),
-(54, 'garlic grilled steaks', 'Meatatarian', '../../resources/images/garlic grilled steaks.jpg', 'Garlic cloves, Worcestershire sauce, Boneless beef strip/ ribeye steaks.', 379, '2022-03-13', 9),
+(45, 'Traditional all in one (fasting)', 'Meatatarian', '../../resources/images/ye tsom.jpeg', 'Vegies, Cereals, Rice, Soups.', 153, '2022-03-13', 9),
+(46, 'Traditional all in one (Non-fasting)', 'Meatatarian', '../../resources/images/ye fesk.jpg', 'Beef (all kind), Egg.', 215, '2022-03-13', 9),
+(47, 'Crispy Fried Chicken', 'Meatatarian', '../../resources/images/Crispy-Fried-Chicken.jpg', 'Barbeque sause,chicken,pepper, onion,cheese, Tomato Sauce.', 250, '2022-03-13', 8),
+(48, 'BBQ Chicken Pizza', 'Meatatarian', '../../resources/images/pizza.jpg', 'Flour, Mozzarella Cheese, Tomato Sauce.', 250, '2022-03-13', 9),
+(49, 'Margheritta Pizza', 'Meatatarian', '../../resources/images/BBQ-Ranch-Chicken-Pizza.jpg', 'yeast,olive oil,sugar, bread flour,basil leaves,oregano, mozzarella cheese,pepper,tomatoes.', 250, '2022-03-13', 8),
+(50, 'Vegiterian Pizza', 'Meatatarian', '../../resources/images/pizza.png', 'red peppers,mushroom,tomatoes, black olives,mozzarella, garlic,spinach.', 110, '2022-03-13', 9),
+(51, 'Shekla Tibs', 'Meatatarian', '../../resources/images/tibs (2).jpg', 'Beef, Red onion, Garlic, Pepper, Injera, Bread.', 110, '2022-03-13', 9),
+(52, 'Beef Fillets with Portobello Sauce', 'Meatatarian', '../../resources/images/Beef-Fillets-with-Portobello-Sauce.jpg', 'Flour, Mozzarella Cheese, Tomato Sauce.', 110, '2022-03-13', 9),
+(53, 'Crispy Beer Battered Fish', 'Meatatarian', '../../resources/images/Crispy-Beer-Battered-Fish.jpg', 'Cod fillets, Cornstarch, Baking powder, Paprika, Creole seasoning.', 350, '2022-03-13', 9),
+(54, 'garlic grilled steaks', 'Meatatarian', '../../resources/images/garlic grilled steaks.jpg', 'Garlic cloves, Worcestershire sauce, Boneless beef strip/ ribeye steaks.', 379, '2022-03-13', 8),
 (55, 'Creamy chicken with potatoes,chorizo and leeks', 'Special', '../../resources/images/creamy chicken.png', 'Chicken breasts spanish chorizo, Garlic, potato, yellow onion, small leak, kosher salt, olive oil, paprika, red pepper chicken broth, white wine, heavy cream chives,parsley leaves,', 486, '2022-02-14', 10),
 (56, 'Warm salad with lamb chops and meditrranean dressing', 'Special', '../../resources/images/warm salad.png', 'Lamb ribs olive oil,red wine vinegar,green onion marjoram,thyme,black peeper raddicho,cherry tomatoes,spinach', 520, '2022-02-14', 10),
 (57, 'Japanese roast chicken', 'Special', '../../resources/images/japanese roast.png', 'Chicken navel orange,carrot,olive oilbutter, Japanese spice mix,chicken broth sesame oil, fresh herbs,baby boy choy', 398, '2022-02-14', 10),
 (58, 'Orange-LemonCake,chorizo and leeks', 'Special', '../../resources/images/Orange-Lemon-Cake.jpg', 'Orange juice, Lemon cake, Orange gelatin, Eggs, Flour.', 125, '2022-02-14', 10),
 (59, 'Bread', 'Special', '../../resources/images/exps.jpg', 'Package Chocolate, Cream Cheese, Egg, semi-sweet chocolate chips, Semi-sweet chocolate chips.', 125, '2022-02-14', 10),
 (60, 'Lamb chops with blackberry-pear,chorizo and leeks', 'Special', '../../resources/images/lamb-chops.png', 'Lamb ribs pear,green onoins,cloves vegitable oil, blackberries,red wine vinegar allspice,black peeper', 478, '2022-02-14', 10),
-(61, 'Black Bean and Rice', 'vegetarian', '../../resources/images/Black-Bean-and-Rice.jpg', 'Kidney beans, Brown rice, Italian Seasoning, Bay leaf, Tomato sauce, chili powder.', 150, '2022-01-14', 10),
-(62, 'Chili Lime Mushroom Tacos', 'vegetarian', '../../resources/images/Chili-Lime-Mushroom Tacos_.jpg', 'Fresh lime, Mushroom, Red chili.', 200, '2022-01-14', 10),
+(61, 'Black Bean and Rice', 'vegetarian', '../../resources/images/Black-Bean-and-Rice.jpg', 'Kidney beans, Brown rice, Italian Seasoning, Bay leaf, Tomato sauce, chili powder.', 150, '2022-01-14', 7),
+(62, 'Chili Lime Mushroom Tacos', 'vegetarian', '../../resources/images/Chili-Lime-Mushroom Tacos_.jpg', 'Fresh lime, Mushroom, Red chili.', 200, '2022-01-14', 9),
 (63, 'Slow Cooker Veggie Lasagna', 'vegetarian', '../../resources/images/Slow-Cooker-Veggie-Lasagna.jpg', 'Vegetable bouillon, Whole wheat lasagna sheets, Tomatoes, courgettes.', 137, '2022-01-14', 10),
 (64, 'Zucchini Lasagna Rolls', 'vegetarian', '../../resources/images/Zucchini-Lasagna-Rolls.jpg', 'Zucchini, Italian sausage, Skim ricotta cheese.', 149, '2022-01-14', 10),
 (65, 'Southern Okra Bean Stew', 'vegetarian', '../../resources/images/Southern-Okra-Bean-Stew.jpg', 'Kidney beans, Diced Tomatoes, Garlic, Hot sauce.', 66, '2022-01-14', 9),
@@ -494,20 +472,7 @@ CREATE TABLE `ordered_delivery` (
 --
 
 INSERT INTO `ordered_delivery` (`delivery_id`, `food_id`, `quantity`) VALUES
-(6, 41, 2),
-(6, 42, 1),
-(6, 43, 1),
-(7, 41, 3),
-(7, 44, 1),
-(7, 48, 1),
-(8, 45, 1),
-(8, 46, 1),
-(9, 50, 1),
-(9, 51, 1),
-(10, 52, 1),
-(10, 53, 1),
-(11, 61, 1),
-(11, 62, 1);
+(12, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -526,62 +491,9 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`order_id`, `food_id`, `quantity`) VALUES
-(1, 41, 1),
-(1, 43, 1),
-(3, 42, 1),
-(3, 62, 5),
-(6, 2, 2),
-(7, 2, 2),
-(8, 1, 2),
-(8, 2, 2),
-(8, 42, 1),
-(10, 41, 1),
-(10, 42, 1),
-(10, 44, 1),
-(10, 45, 1),
-(10, 46, 1),
-(11, 41, 1),
-(11, 42, 1),
-(11, 44, 1),
-(11, 45, 1),
-(11, 46, 1),
-(12, 1, 1),
-(12, 42, 1),
-(12, 43, 1),
-(12, 44, 1),
-(13, 1, 1),
-(13, 42, 1),
-(13, 43, 1),
-(14, 41, 1),
-(14, 42, 1),
-(14, 43, 1),
-(15, 41, 1),
-(15, 42, 1),
-(15, 43, 1),
-(16, 41, 1),
-(16, 42, 1),
-(16, 43, 1),
-(17, 41, 1),
-(17, 42, 1),
-(17, 43, 1),
-(18, 41, 1),
-(18, 42, 1),
-(18, 43, 1),
-(19, 41, 1),
-(19, 42, 1),
-(19, 43, 1),
-(20, 41, 1),
-(20, 42, 1),
-(20, 43, 1),
-(21, 41, 1),
-(21, 42, 1),
-(21, 43, 1),
-(24, 1, 1),
-(25, 1, 1),
-(26, 1, 1),
-(27, 22, 1),
-(27, 40, 1),
-(27, 41, 3);
+(2, 42, 1),
+(2, 43, 1),
+(2, 44, 1);
 
 -- --------------------------------------------------------
 
@@ -606,7 +518,7 @@ CREATE TABLE `ordersfood` (
 --
 
 INSERT INTO `ordersfood` (`order_id`, `user_id`, `food_ordered`, `allergy`, `date`, `time`, `phone`, `phone1`, `address`) VALUES
-(1, 16, 'Chicken Grilled \r\n Doro Wot \r\n ', 'Garlic ,  ', '2022-06-07', '02:44:00', '+251', '978787878', 'addis');
+(2, 38, 'Cheese Burger \r\n Doro Wot \r\n Traditional Tibs \r\n ', 'Shrimp , Peanuts,  ', '2022-06-07', '01:50:00', '+251', '978787878', 'addis');
 
 -- --------------------------------------------------------
 
@@ -642,14 +554,14 @@ INSERT INTO `registration` (`user_id`, `user_name`, `active_sessions`, `user_ema
 (14, 'trial3', NULL, 't@gmail.com', '$2y$10$ppuIdkUTxhKODsPRGqa.A.WcquZOp6OyE6BQSiKBLgWXQZU5iGL1i', 'not admin', '', NULL, 0),
 (16, 'Okitta Ongaye', NULL, 'ok@gmail.com', '$2y$10$qtIL/0DlOV3tSztt/fvAFelti/T4aDvRDqeuTzxz3HwnirD5VpEW.', 'admin', '', '2022-06-07 22:34:05', 0),
 (32, 'neww', NULL, 'rob@gmail.com', '$2y$10$7lZ2S2mPddXllvTiHcBej.GV7CihzZBHE4mLboC7n3uVfLU2RhHPu', 'not admin', '1a2e0a73e4cad4c46900d5bb8e12b07d', NULL, 3778),
-(38, 'newer', 'hpmr4j9q8njas1h5kequs82flj', 'pteshome2136@gmail.com', '$2y$10$zOacbt4E.7/8t3lpqgCp..mwEXJAkdaWaZPk3KvG8lGWRWFY4tOEu', 'not admin', 'd5092d1d0eff2e1b1f82ab7d6378a584', '2022-06-05 09:09:51', 0),
-(40, 'newest', NULL, 'pteshome2136@gmail.com', '$2y$10$5X2r4IG4EJ2rQcd6gdhGre8WxrkFsTbB5xw3OlEkv.AypYC6NgkUy', 'not admin', 'd334f280e853e8ded31660381e88ae40', NULL, 0),
+(38, 'newer', NULL, 'pteshome2136@gmail.com', '$2y$10$zOacbt4E.7/8t3lpqgCp..mwEXJAkdaWaZPk3KvG8lGWRWFY4tOEu', 'not admin', 'd5092d1d0eff2e1b1f82ab7d6378a584', '2022-06-05 09:09:51', 1326),
+(40, 'newest', NULL, 'pteshome2136@gmail.com', '$2y$10$5X2r4IG4EJ2rQcd6gdhGre8WxrkFsTbB5xw3OlEkv.AypYC6NgkUy', 'not admin', 'd334f280e853e8ded31660381e88ae40', NULL, 2643),
 (41, 'me', NULL, 'rberhane383@gmail.com', '$2y$10$WoqWxC3qgMc0NBMYn17cEOzK1tyw9Ok6oXjlfj7Kxqtw0zaGIERBi', 'not admin', 'cc6d85046496746a411567c883b3a715', NULL, 0),
 (42, 'newwww', NULL, 'rberhane383@gmail.com', '$2y$10$vuzHBo.6IVgNMI4rAL3jEOaNkESVTO7yi8JctEciJWFQFROq6rY5W', 'not admin', '176b62c3716da0c9064906ba519e0f96', NULL, 0),
 (43, 'ssss', NULL, 'rberhane383@gmail.com', '$2y$10$UKmrGaf1g8m4LZyUv01fau0shvtpaPVOmS3aMJHDVi2yyNDeY7YiS', 'not admin', '8103292f50e56c08ea7ea3177d4727a1', NULL, 0),
 (45, 'pttt', NULL, 'rberhane383@gmail.com', '$2y$10$wY50cU4aTKuHOdxzEDHfgugkPnWiXXlV.2JozeIn9DpxCPfgFD.jG', 'not admin', 'caa947475fecdc7545b3b532d3b34441', NULL, 0),
 (46, 'paul tesh', NULL, 'pteshome2136@gmail.com', '$2y$10$47h5cf4ngiGzcrEE072dgOEfEwNdv2OSDWRdkeG6dDU4bgOlJ3gZW', 'not admin', 'f90fa0e50e66459629738ce8dc1ad6ea', '2022-06-06 21:20:04', 2913),
-(47, 'Rediet Berhane', NULL, 'rberhane383@gmail.com', '$2y$10$AI4DSM//Z.42o1vcln7Mg.6lLFGHdQ4umx2FipshBh4Q4LoWkuWdq', 'admin', 'zxwfa0e50e66459629738ceewc1ad6ea', '2022-06-04 22:40:08', 0);
+(47, 'Rediet Berhane', '4c338f7c9p6ee0ef5ccr5ovd6p', 'rberhane383@gmail.com', '$2y$10$AI4DSM//Z.42o1vcln7Mg.6lLFGHdQ4umx2FipshBh4Q4LoWkuWdq', 'admin', 'zxwfa0e50e66459629738ceewc1ad6ea', '2022-06-04 22:40:08', 0);
 
 -- --------------------------------------------------------
 
@@ -720,7 +632,7 @@ CREATE TABLE `table_info` (
 --
 
 INSERT INTO `table_info` (`table_number`, `table_type`, `position`, `table_state`) VALUES
-(1, 'Mysteria Table', 'Outdoor', 0),
+(1, 'Mysteria Table', 'Outdoor', 1),
 (2, 'Dinner Table', 'Roof top', 0),
 (3, 'Family Table', 'Indoor', 0),
 (4, 'Candle Table', 'Indoor', 0),
@@ -821,7 +733,8 @@ ALTER TABLE `tablereservation`
   ADD PRIMARY KEY (`reservation_id`),
   ADD KEY `user_id` (`user_id`),
   ADD KEY `Table_numFK` (`table_number`),
-  ADD KEY `user_id_2` (`user_id`);
+  ADD KEY `user_id_2` (`user_id`),
+  ADD KEY `user_id_3` (`user_id`);
 
 --
 -- Indexes for table `table_info`
@@ -837,7 +750,7 @@ ALTER TABLE `table_info`
 -- AUTO_INCREMENT for table `delivery`
 --
 ALTER TABLE `delivery`
-  MODIFY `delivery_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `delivery_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `feedback`
@@ -855,7 +768,7 @@ ALTER TABLE `foodmenu`
 -- AUTO_INCREMENT for table `ordersfood`
 --
 ALTER TABLE `ordersfood`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `registration`
