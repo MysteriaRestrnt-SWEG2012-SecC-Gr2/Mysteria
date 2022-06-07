@@ -5,7 +5,7 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
-require 'C:/xampp/composerr/vendor/autoload.php';
+require 'C:/xampp/composer/vendor/autoload.php';
 $mail = new PHPMailer(true);
 
 if (isset($_POST["Treserve"])) {
@@ -65,6 +65,7 @@ else{
                 $mail->isHTML(true);                                  //Set email format to HTML
                 $mail->Subject = 'Event Reservation';
                 $mail->Body = 'Event have been successfuly reserved for the date '.$date.'and for time '.$time. 'for '.$people.' people with room number '.$number.'. please refer back to this information for canceling your reservation.';
+
                 if( $mail->send())
                 {
                     
