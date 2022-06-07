@@ -87,7 +87,7 @@ include '../../shared/CheckLogin.php';
                                                         <option value="paypall">PayPall</option>
                                                     </select><br>
                                                     <label for="acc_number">account:</label>
-                                                    <input type="text" name="account_number" id="acc_number"  placeholder="Enter account number" ><br>
+                                                    <input type="text" name="account_number" id="acc_number"  class='input-field' placeholder="Enter account number" ><br>
                                                </div>
                                            </div>
                                            <input type='submit' name="Treserve"  class='submit-button' value="Reserve now">
