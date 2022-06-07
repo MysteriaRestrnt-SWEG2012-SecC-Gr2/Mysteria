@@ -7,7 +7,7 @@
        <html>  
             <head>  
                  <title> Export</title>  
-                 <link rel="stylesheet" type="text/css" href="reportStyle.css"> 
+                 <link rel="stylesheet" type="text/css" href="../css/reportstyle.css"> 
             </head>  
             <body>
                 
@@ -30,7 +30,7 @@
             <option value="pdf">To PDF</option>
             <option value="excel">To Excel</option>
         </select><br>
-        <input type="submit" name="submit" value="Submit" class="btn">
+        <input type="submit" name="submit" value="Submit" class="btns">
 
     </form>
                     <?php
