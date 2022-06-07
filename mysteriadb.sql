@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 07, 2022 at 12:49 AM
+-- Generation Time: Jun 07, 2022 at 10:57 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -84,7 +84,7 @@ CREATE TABLE `feedback` (
   `feedback_no` int(11) NOT NULL,
   `user_id` int(11) DEFAULT NULL,
   `subject` text NOT NULL,
-  `date` date NOT NULL DEFAULT current_timestamp(),
+  `date` date NOT NULL,
   `feedback` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
