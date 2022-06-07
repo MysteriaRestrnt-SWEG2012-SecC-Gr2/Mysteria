@@ -45,23 +45,21 @@ include '../shared/CheckAdminLogin.php';
             <h1>Report</h1>
         </div>
         <div class="data">
-            <form action="AdminPage.php" method="GET">
-                <select name="select">
-                    <option value="select">*</option>                            
-                </select>
-                <select>
-                    <option>from</option>
-                </select>
-                <select id="category" name="category">
-                    <option  value="delivery">delivery</option>
-                    <option  value="feedback">feedback</option>
-                    <option  value="ingredient">ingredient</option>
-                    <option  value="ordersfood">ordersfood</option>
-                    <option  value="registration">registration</option>
-                    <option  value="reservation">reservation</option>
-                    <option  value="tablereservation">table reservation</option>
-                </select><br>
-                <input type="submit" name="submit" value="Submit" class="btns">
+            <form action="AdminPage.php" method="GET" >
+                <div id="repoForm">
+                        <label id="select">Generate Report From</label>
+                        <select id="category" name="category">
+                                <option  value="delivery">delivery</option>
+                                <option  value="feedback">feedback</option>
+                                <option  value="ingredient">ingredient</option>
+                                <option  value="ordersfood">ordersfood</option>
+                                <option  value="registration">registration</option>
+                                <option  value="reservation">reservation</option>
+                                <option  value="tablereservation">table reservation</option>
+                        </select><br>
+                        <input type="submit" name="submit" value="Submit" class="btns" id="subbtn">
+                </div>
+  
 
             </form> 
             <?php
