@@ -39,10 +39,33 @@ h1 {
     margin: 20px 0px;
     float: left;
     position: relative;
-    margin-right: 20px;
+    left: 10%;
 }
 
-.btn {
+#repoForm {
+    width: 120%;
+}
+
+#subbtn {
+    width: 60px;
+    padding: 3px;
+    margin: 20px 0px;
+    float: left;
+    position: relative;
+    left: 15%;
+    /* top: 15%; */
+}
+
+#select {
+    color: #d638c9;
+    width: 200px;
+    padding: 3px;
+    margin: 20px 0px;
+    float: left;
+    position: relative;
+}
+
+.btns {
     width: 120px;
     height: 30px;
     background-color: #d638c9;
