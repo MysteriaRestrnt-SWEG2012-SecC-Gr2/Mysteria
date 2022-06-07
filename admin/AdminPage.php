@@ -291,7 +291,7 @@ include '../shared/CheckAdminLogin.php';
     }
     ?>
    <table class="tab3">
-    <form action="exports.php" method="GET">
+    <form action="csv2.php" method="GET">
           <tr>
              <th> <input type="submit" name="submit2" value="Export" class="btn3"></th></tr>
                     
