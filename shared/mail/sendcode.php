@@ -12,7 +12,10 @@ $mail = new PHPMailer(true);
 if (isset($_POST['signup']))
 {
     $UserName = $_POST["Username"];
-    $Id=$_SESSION["userID"];
+    if(isset($_SESSION["userID"])){
+         $Id=$_SESSION["userID"];
+    }
+   
     $email = $_POST["Email"];
     $password = $_POST["Password"];
     $cpassword = $_POST["Password2"];
@@ -37,7 +40,7 @@ if(!$conn){
 $sql= "SELECT * FROM registration WHERE user_name = '$UserName'";
 $insertionResult2 = mysqli_query($connectVariable, $sql);
     if(mysqli_num_rows($insertionResult2)>0){
-        echo '<script type ="application/JavaScript"> alert ("username is taken"); window.location.href="signup.php"; </script>'; 
+        echo '<script type ="application/JavaScript"> alert ("username is taken"); window.location.href="http://localhost/Mysteria/shared/signup.php"; </script>'; 
     }else{
         $insert = ("insert into registration(user_name,user_email,user_password, email_verification_link) 
         values('$UserName', '$email','$hash', '$vkey')");
@@ -75,7 +78,7 @@ $insertionResult2 = mysqli_query($connectVariable, $sql);
          else 
          {
          $_SESSION['sent'] = <<<eol
-         <span id="message" style="font-size:15px; color:green;">Message could not be sent. Mailer Error: {$mail->ErrorInfo}</span>
+         <span id="message" style="font-size:15px; color:red;">Message could not be sent. Mailer Error: {$mail->ErrorInfo}</span>
          eol;
          header("Location: http://localhost/Mysteria/shared/signup.php");
              }
