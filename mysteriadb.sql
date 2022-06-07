@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 07, 2022 at 10:57 AM
+-- Generation Time: Jun 07, 2022 at 11:27 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -640,9 +640,9 @@ INSERT INTO `registration` (`user_id`, `user_name`, `active_sessions`, `user_ema
 (12, 'aman', NULL, 'am@gmail.com', '$2y$10$g/2HY5p3bB3.1bO2rCguj.0O2DoYWr.E/gAh4n5xjJofIr7XzISJm', 'not admin', '', NULL, 0),
 (13, 'selam', NULL, 'selam@gmail.com', '$2y$10$UBLBwfrdnUaAzg9pMQPv2.EFIUnlxu4Zr0IQDJ4aN0Zq3fhKLVS86', 'not admin', '', NULL, 0),
 (14, 'trial3', NULL, 't@gmail.com', '$2y$10$ppuIdkUTxhKODsPRGqa.A.WcquZOp6OyE6BQSiKBLgWXQZU5iGL1i', 'not admin', '', NULL, 0),
-(16, 'Okitta Ongaye', 'atcrj0i4jn41pj4pt5k6an70m8', 'ok@gmail.com', '$2y$10$qtIL/0DlOV3tSztt/fvAFelti/T4aDvRDqeuTzxz3HwnirD5VpEW.', 'admin', '', '2022-06-07 22:34:05', 0),
+(16, 'Okitta Ongaye', NULL, 'ok@gmail.com', '$2y$10$qtIL/0DlOV3tSztt/fvAFelti/T4aDvRDqeuTzxz3HwnirD5VpEW.', 'admin', '', '2022-06-07 22:34:05', 0),
 (32, 'neww', NULL, 'rob@gmail.com', '$2y$10$7lZ2S2mPddXllvTiHcBej.GV7CihzZBHE4mLboC7n3uVfLU2RhHPu', 'not admin', '1a2e0a73e4cad4c46900d5bb8e12b07d', NULL, 3778),
-(38, 'newer', NULL, 'pteshome2136@gmail.com', '$2y$10$zOacbt4E.7/8t3lpqgCp..mwEXJAkdaWaZPk3KvG8lGWRWFY4tOEu', 'not admin', 'd5092d1d0eff2e1b1f82ab7d6378a584', NULL, 0),
+(38, 'newer', 'hpmr4j9q8njas1h5kequs82flj', 'pteshome2136@gmail.com', '$2y$10$zOacbt4E.7/8t3lpqgCp..mwEXJAkdaWaZPk3KvG8lGWRWFY4tOEu', 'not admin', 'd5092d1d0eff2e1b1f82ab7d6378a584', '2022-06-05 09:09:51', 0),
 (40, 'newest', NULL, 'pteshome2136@gmail.com', '$2y$10$5X2r4IG4EJ2rQcd6gdhGre8WxrkFsTbB5xw3OlEkv.AypYC6NgkUy', 'not admin', 'd334f280e853e8ded31660381e88ae40', NULL, 0),
 (41, 'me', NULL, 'rberhane383@gmail.com', '$2y$10$WoqWxC3qgMc0NBMYn17cEOzK1tyw9Ok6oXjlfj7Kxqtw0zaGIERBi', 'not admin', 'cc6d85046496746a411567c883b3a715', NULL, 0),
 (42, 'newwww', NULL, 'rberhane383@gmail.com', '$2y$10$vuzHBo.6IVgNMI4rAL3jEOaNkESVTO7yi8JctEciJWFQFROq6rY5W', 'not admin', '176b62c3716da0c9064906ba519e0f96', NULL, 0),
@@ -694,6 +694,13 @@ CREATE TABLE `tablereservation` (
   `reserved` tinyint(1) NOT NULL,
   `table_number` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tablereservation`
+--
+
+INSERT INTO `tablereservation` (`reservation_id`, `user_id`, `date`, `time`, `position`, `table_type`, `car_parking`, `number_of_people`, `phone`, `phone1`, `payment_type`, `account_number`, `reserved`, `table_number`) VALUES
+(1, 38, '2022-06-08', '01:11:00', 'Outdoor', 'Mysteria Table', 'Yes', 1, '+251', '978787878', 'visa card', '111111111111111', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -783,7 +790,8 @@ ALTER TABLE `ordered_delivery`
 --
 ALTER TABLE `orders`
   ADD PRIMARY KEY (`order_id`,`food_id`),
-  ADD KEY `foodFK` (`food_id`);
+  ADD KEY `foodFK` (`food_id`),
+  ADD KEY `order_id` (`order_id`);
 
 --
 -- Indexes for table `ordersfood`
@@ -812,7 +820,8 @@ ALTER TABLE `reservation`
 ALTER TABLE `tablereservation`
   ADD PRIMARY KEY (`reservation_id`),
   ADD KEY `user_id` (`user_id`),
-  ADD KEY `Table_numFK` (`table_number`);
+  ADD KEY `Table_numFK` (`table_number`),
+  ADD KEY `user_id_2` (`user_id`);
 
 --
 -- Indexes for table `table_info`
@@ -864,7 +873,7 @@ ALTER TABLE `reservation`
 -- AUTO_INCREMENT for table `tablereservation`
 --
 ALTER TABLE `tablereservation`
-  MODIFY `reservation_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `reservation_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `table_info`
