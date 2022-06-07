@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 07, 2022 at 02:10 PM
+-- Generation Time: Jun 07, 2022 at 05:03 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -584,6 +584,13 @@ CREATE TABLE `reservation` (
   `room` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `reservation`
+--
+
+INSERT INTO `reservation` (`reservation_id`, `user_id`, `date`, `time`, `occasion`, `number_of_people`, `phone1`, `phone2`, `payment_type`, `account_number`, `reserved`, `room`) VALUES
+(1, 47, '2022-06-15', '07:13:00', 'Bridal Shower', 20, '+251', '986776776', 'visa card', '123456654321123', 1, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -780,7 +787,7 @@ ALTER TABLE `registration`
 -- AUTO_INCREMENT for table `reservation`
 --
 ALTER TABLE `reservation`
-  MODIFY `reservation_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `reservation_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tablereservation`
