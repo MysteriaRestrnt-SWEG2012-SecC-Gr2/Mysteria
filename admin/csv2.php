@@ -1,7 +1,7 @@
 <?php 
+include '../shared/CheckAdminLogin.php';
    require_once '../db/connectVar.php';
    require ('../fpdf/fpdf.php');
-
 ?>
 <!DOCTYPE html>  
 <html>  

@@ -1,5 +1,5 @@
  <?php 
- //include '../shared/CheckLogin.php';
+include '../shared/CheckAdminLogin.php';
     require_once '../db/connectVar.php';
  ?>
  <!DOCTYPE html>  

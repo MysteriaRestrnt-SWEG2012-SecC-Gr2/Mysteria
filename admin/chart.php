@@ -1,4 +1,6 @@
-
+<?php 
+include '../shared/CheckAdminLogin.php';
+?>
 <!doctype html>
 <html lang="en">
 <head>
