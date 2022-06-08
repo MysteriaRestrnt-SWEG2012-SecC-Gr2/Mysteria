@@ -5,7 +5,7 @@ use PHPMailer\PHPMailer\Exception;
 
 //Load Composer's autoloader
 require 'C:/xampp/composer/vendor/autoload.php';
-$mail = new PHPMailer(true);
+$mail = new PHPMailer;
 
 include 'CheckSignup.php';
 require_once'../db/connectVar.php';
@@ -291,24 +291,26 @@ require_once'../db/connectVar.php';
                     
                     
                     if (mysqli_num_rows($insertionResult)>0 && $result) {
-                        $mail->SMTPDebug = false;                             //Enable verbose debug output
-                                $mail->isSMTP();                                                  //Send using SMTP
-                                $mail->Host       = 'smtp.gmail.com';                            //Set the SMTP server to send through
-                                $mail->SMTPAuth   = true;                                       //Enable SMTP authentication
-                                $mail->Username   = 'restaurantmysteria@gmail.com';                   //SMTP username
-                                $mail->Password   = '@Mysteria#2';                              //SMTP password
-                                $mail->SMTPSecure = 'tls';                                   //Enable implicit TLS encryption
-                                $mail->Port       = 587;
+                          //Enable verbose debug output
+                            $mail->IsSMTP();   
+                            $mail->SMTPDebug = false;                                          //Send using SMTP
+                            $mail->Host       = 'smtp.mail.yahoo.com';                     //Set the SMTP server to send through
+                            $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+                            $mail->Username   = 'restaurantmysteria@yahoo.com';                     //SMTP username
+                            $mail->Password   = 'cgybsqosnsctuftr';                               //SMTP password
+                            $mail->SMTPSecure = 'ssl';            //Enable implicit TLS encryption
+                            $mail->Port       = 465;    
+         
                         
                         //Recipients
-                        $mail->setFrom('restaurantmysteria@gmail.com', 'MYSTERIA RESTAURANT');
+                        $mail->setFrom('restaurantmysteria@yahoo.com', 'MYSTERIA RESTAURANT');
                         $mail->addAddress($email, $UserName);        //Add a recipient
 
                                         
                         //Content
                                 $mail->isHTML(true);                                  //Set email format to HTML
                                 $mail->Subject = 'Forgot password verification code';
-                        $mail->Body = 'Here is your code '.$random.'';
+                                $mail->Body = 'Here is your code '.$random.'';
                         if ($mail->send()) {
                             $_SESSION['sent2'] = <<<eol
                                     <span id="message" style="font-size:15px; color:green;">We have sent a reset code to your email.</span><br>
