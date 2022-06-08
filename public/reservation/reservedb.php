@@ -76,7 +76,8 @@ if (isset($_POST["Treserve"])) {
                 $insertionResult2=mysqli_query($connectVariable, $queryInsertion2);
                 if($insertionResult && $insertionResult2)
                 {
-                    echo '<script type ="application/JavaScript"> alert ("Mail has been sent.");  window.location.href="../home/home.php"; </script>'; 
+                    echo '<script type ="application/JavaScript"> window.location.assign("http://localhost/Mysteria/public/reservation/reservationnew.php#popup3"); </script>';
+                    exit();
                 }
                 }
                 else 

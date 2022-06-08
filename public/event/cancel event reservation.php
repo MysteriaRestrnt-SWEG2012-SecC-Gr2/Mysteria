@@ -28,7 +28,7 @@ include '../../shared/CheckLogin.php';
                                     <h3 class="main-heading">Cancellation Form</h3>
                                 </center><br>
                             </div>
-                            <form id="form2" class="login-form" action="cancel.php" onsubmit="return eventValidateForm()">
+                            <form id="form2" class="login-form" action="cancel.php" onsubmit="return eventValidateForm()" method="POST">
                                 <div class="form-holder">
                                     <big><label for="CustName">Customer: <?php $var=$_SESSION['user']; echo"$var"?></label></big><br>
                                     <div class="form-control">
@@ -164,7 +164,7 @@ include '../../shared/CheckLogin.php';
                             Feedback Form
                         </h2>
                     </div>
-                    <form class="feedback-form" id="form">
+                    <form class="feedback-form" id="form" >
                         <div class="feedback-form-control">
                             <lable class="feedback-lable">
                                 <span class="feedback-span">User Name</span>
@@ -212,7 +212,7 @@ include '../../shared/CheckLogin.php';
                     <a href="www.mysteriammtopr@gmail.com">mysteriammtopr@gmail.com</a><br>THANK YOU FOR CHOOSING US.<br>
                 </p>
                 <button  onclick="window.location.href='../reservation/reservationnew.php#popup1';">Table Reservation Form</button>
-                <button  onclick="window.location.href='events.php#popup1';">Event Reservation Form</button>
+                <button  onclick="window.location.href='reserve.php#popup1';">Event Reservation Form</button>
             </div>
         </div>
     </section>

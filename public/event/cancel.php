@@ -17,21 +17,21 @@ if (isset($_POST["Treserve"]))
         die("The database is not connected");
 
       
-        $sql= "SELECT * FROM reservation where user_id='$user_id' and date='$date' and occasion='$occasion' and table_number='$table_number' and number_of_people='$people' and reserved='1';";
+        $sql= "SELECT * FROM reservation where user_id='$user_id' and date='$date' and occasion='$occasion' and number_of_people='$people' and reserved='1';";
         $insertionResult2 = mysqli_query($connectVariable, $sql);
     if(mysqli_num_rows($insertionResult2)>0){
-        echo mysqli_num_rows($insertionResult2);
+        // echo mysqli_num_rows($insertionResult2);
         $row=mysqli_fetch_assoc($insertionResult2);
         $reserved=$row['reserved'];
         $reservID=$row['reservation_id'];
-      if($reserved==1)
+      if($reserved==true )
         {
             $queryInsertion = "UPDATE reservation SET reserved='$state' WHERE reservation_id='$reservID' and user_id='$user_id'";
             $insertionResult = mysqli_query($connectVariable, $queryInsertion);
     
             if ($insertionResult)
             {
-                header ("Location: ../reservation/cancelreservation.php#popup3");
+                header ("Location:cancel event reservation.php#popup3");
                 exit();
             }
             else

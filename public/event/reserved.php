@@ -72,7 +72,8 @@ else{
                     $queryInsertion .= " VALUES ('$user_id','$date','$time','$occasion','$people','$phonecode','$phone','$paymenttype','$accountnumber','$reserved','$number')";
                     $insertionResult = mysqli_query($connectVariable, $queryInsertion);
                     if($insertionResult){
-                        echo '<script type ="application/JavaScript"> alert ("Mail has been sent.");  window.location.href="../home/home.php"; </script>'; 
+                        echo '<script type ="application/JavaScript"> window.location.assign("http://localhost/Mysteria/public/event/reserve.php#popup3"); </script>';
+                        exit(); 
                     }
                     else{
                         echo"enkuan";
