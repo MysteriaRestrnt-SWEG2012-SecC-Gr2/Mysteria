@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 07, 2022 at 05:03 PM
+-- Generation Time: Jun 08, 2022 at 09:34 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -543,7 +543,7 @@ CREATE TABLE `registration` (
 --
 
 INSERT INTO `registration` (`user_id`, `user_name`, `active_sessions`, `user_email`, `user_password`, `user_grp`, `email_verification_link`, `email_verified_at`, `code`) VALUES
-(1, 'Paulos Teshome', '', 'pt1234@gmail.com', '$2y$10$ylnRBlglwHBhoBqNH5LfquShA3g5uifl6Q.ml06x3B2UF/tVpybKy', 'not admin', '', NULL, 0),
+(1, 'Paulos Teshome', NULL, 'pt1234@gmail.com', '$2y$10$ylnRBlglwHBhoBqNH5LfquShA3g5uifl6Q.ml06x3B2UF/tVpybKy', 'not admin', '', NULL, 0),
 (3, 'Meron Abera', NULL, 'Mer@gmail.com', '$2y$10$FWe9SSF2vOFBOIGg38GlJOvMfxnlhybaoJEPR5IGaAp2CZMddd8dy', 'not admin', '', NULL, 0),
 (6, 'pth', NULL, 'pt1234@gmail.com', '$2y$10$ylnRBlglwHBhoBqNH5LfquShA3g5uifl6Q.ml06x3B2UF/tVpybKy', 'not admin', '', NULL, 0),
 (9, 'robel', NULL, 'rob@gmail.com', '$2y$10$x90hj/3ksJnV.H8YJAIyw.DcKp9QBP4yx3qj5gFgHildB9GrmPbIG', 'not admin', '', NULL, 0),
@@ -561,7 +561,9 @@ INSERT INTO `registration` (`user_id`, `user_name`, `active_sessions`, `user_ema
 (43, 'ssss', NULL, 'rberhane383@gmail.com', '$2y$10$UKmrGaf1g8m4LZyUv01fau0shvtpaPVOmS3aMJHDVi2yyNDeY7YiS', 'not admin', '8103292f50e56c08ea7ea3177d4727a1', NULL, 0),
 (45, 'pttt', NULL, 'rberhane383@gmail.com', '$2y$10$wY50cU4aTKuHOdxzEDHfgugkPnWiXXlV.2JozeIn9DpxCPfgFD.jG', 'not admin', 'caa947475fecdc7545b3b532d3b34441', NULL, 0),
 (46, 'paul tesh', NULL, 'pteshome2136@gmail.com', '$2y$10$47h5cf4ngiGzcrEE072dgOEfEwNdv2OSDWRdkeG6dDU4bgOlJ3gZW', 'not admin', 'f90fa0e50e66459629738ce8dc1ad6ea', '2022-06-06 21:20:04', 2913),
-(47, 'Rediet Berhane', '4c338f7c9p6ee0ef5ccr5ovd6p', 'rberhane383@gmail.com', '$2y$10$AI4DSM//Z.42o1vcln7Mg.6lLFGHdQ4umx2FipshBh4Q4LoWkuWdq', 'admin', 'zxwfa0e50e66459629738ceewc1ad6ea', '2022-06-04 22:40:08', 0);
+(47, 'Rediet Berhane', NULL, 'rberhane383@gmail.com', '$2y$10$AI4DSM//Z.42o1vcln7Mg.6lLFGHdQ4umx2FipshBh4Q4LoWkuWdq', 'admin', 'zxwfa0e50e66459629738ceewc1ad6ea', '2022-06-04 22:40:08', 0),
+(49, 'amele', NULL, 'paulman7792@gmail.com', '$2y$10$nJfuAUfqZhwwK4LmDtk5sOl3WvEo86Xrj8rBZeLZfumhgLpG7tf9K', 'not admin', 'ad8bad6479a8c77d6559e59154f674dd', NULL, 0),
+(59, 'newUser', NULL, 'pteshome2136@gmail.com', '$2y$10$q05AwdvCv1Vo08BeqaRIR.0VwnhBj.UtzHAT/A.cpO.1vgL/Fs2ra', 'not admin', '8433a2b64d2ea011b7c0a4ccc6e9116f', NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -781,7 +783,7 @@ ALTER TABLE `ordersfood`
 -- AUTO_INCREMENT for table `registration`
 --
 ALTER TABLE `registration`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
 
 --
 -- AUTO_INCREMENT for table `reservation`
