@@ -6,7 +6,8 @@ use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
 require 'C:/xampp/composer/vendor/autoload.php';
-$mail = new PHPMailer(true);
+$mail = new PHPMailer;
+
 
 if (isset($_POST["Treserve"])) {
     $user_id=$_SESSION['userID'];
@@ -48,24 +49,22 @@ else{
              
 
                 
-                $mail->SMTPDebug = false;                             //Enable verbose debug output
-                $mail->isSMTP();                                                  //Send using SMTP
-                $mail->Host       = 'smtp.gmail.com';                            //Set the SMTP server to send through
-                $mail->SMTPAuth   = true;                                       //Enable SMTP authentication
-                $mail->Username   = 'restaurantmysteria@gmail.com';                   //SMTP username
-                $mail->Password   = '@Mysteria#2';                              //SMTP password
-                $mail->SMTPSecure = 'tls';                                   //Enable implicit TLS encryption
-                $mail->Port       = 587;  
-
+                $mail->IsSMTP();   
+                $mail->SMTPDebug = false;                                          //Send using SMTP
+                $mail->Host       = 'smtp.mail.yahoo.com';                     //Set the SMTP server to send through
+                $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+                $mail->Username   = 'restaurantmysteria@yahoo.com';                     //SMTP username
+                $mail->Password   = 'cgybsqosnsctuftr';                               //SMTP password
+                $mail->SMTPSecure = 'ssl';            //Enable implicit TLS encryption
+                $mail->Port       = 465;    
                 //Recipients
-                $mail->setFrom('restaurantmysteria@gmail.com', 'MYSTERIA RESTAURANT');
+                $mail->setFrom('restaurantmysteria@yahoo.com', 'MYSTERIA RESTAURANT');
                 $mail->addAddress($_SESSION['email'], $_SESSION['user']);     //Add a recipient
                
                 //Content
                 $mail->isHTML(true);                                  //Set email format to HTML
                 $mail->Subject = 'Event Reservation';
                 $mail->Body = 'Event have been successfuly reserved for the date '.$date.'and for time '.$time. 'for '.$people.' people with room number '.$number.'. please refer back to this information for canceling your reservation.';
-
                 if( $mail->send())
                 {
                     

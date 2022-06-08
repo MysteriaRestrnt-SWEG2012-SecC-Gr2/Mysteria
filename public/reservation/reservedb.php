@@ -6,13 +6,13 @@ use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
 require 'C:/xampp/composer/vendor/autoload.php';
-$mail = new PHPMailer(true);
+$mail = new PHPMailer;
 
 if (isset($_POST["Treserve"])) {
     $user_id=$_SESSION['userID'];
     $date = $_POST["date"];
     $time=$_POST["time"];
-    // echo $time;
+    echo $time;
     $position = $_POST["position"];
     $tabletype = $_POST["table_type"];
     $carparking = $_POST["car_parking"];
@@ -44,27 +44,29 @@ if (isset($_POST["Treserve"])) {
         {             
             $row=mysqli_fetch_assoc($result2);
             $number=$row["table_number"];
-                $mail->SMTPDebug = false;                             //Enable verbose debug output
-                $mail->isSMTP();                                                  //Send using SMTP
-                $mail->Host       = 'smtp.gmail.com';                            //Set the SMTP server to send through
-                $mail->SMTPAuth   = true;                                       //Enable SMTP authentication
-                $mail->Username   = 'restaurantmysteria@gmail.com';                   //SMTP username
-                $mail->Password   = '@Mysteria#2';                              //SMTP password
-                $mail->SMTPSecure = 'tls';                                   //Enable implicit TLS encryption
-                $mail->Port       = 587;  
+                //Enable verbose debug output
+                $mail->IsSMTP();   
+                $mail->SMTPDebug = false;                                          //Send using SMTP
+                $mail->Host       = 'smtp.mail.yahoo.com';                     //Set the SMTP server to send through
+                $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+                $mail->Username   = 'restaurantmysteria@yahoo.com';                     //SMTP username
+                $mail->Password   = 'cgybsqosnsctuftr';                               //SMTP password
+                $mail->SMTPSecure = 'ssl';            //Enable implicit TLS encryption
+                $mail->Port       = 465;    
 
                 //Recipients
-                $mail->setFrom('restaurantmysteria@gmail.com', 'MYSTERIA RESTAURANT');
+                $mail->setFrom('restaurantmysteria@yahoo.com', 'MYSTERIA RESTAURANT');
                 $mail->addAddress($_SESSION['email'], $_SESSION['user']);     //Add a recipient
 
                 //Content
                 $mail->isHTML(true);                                  //Set email format to HTML
                 $mail->Subject = 'Table Reservation';
                 $mail->Body = 'Your table have been successfuly reserved for the date '.$date.' for '.$people.' people at time '.$time.'. your table number is ' .$number.' please refer back to this information for canceling your reservation.';
-                $mail->send();
-  
+
                 if( $mail->send())
-                {                 
+                {
+                    
+                 
                 $state=true;
                 $queryInsertion = "INSERT INTO tablereservation(user_id,date,time,position,table_type,car_parking,number_of_people, phone, phone1,payment_type,account_number,reserved,table_number)";
                 $queryInsertion .= "VALUES('$user_id','$date','$time','$position','$tabletype','$carparking','$people','$phonecode','$phone','$paymenttype','$accountnumber','$reserved','$number');";
