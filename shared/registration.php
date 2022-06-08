@@ -86,7 +86,7 @@ if (isset($_POST['signin'])) {
                     }        
                 }
         }
-        else if(!isset($row['email_verified_at'])){
+        else if($verify && !isset($row['email_verified_at'])){
             $_SESSION['sent'] = <<<eol
             <span id="message" style="font-size:15px; color:red;">Please verify your account before login.</span>
             eol;
