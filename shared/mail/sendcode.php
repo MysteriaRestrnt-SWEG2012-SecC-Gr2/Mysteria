@@ -54,7 +54,7 @@ $insertionResult2 = mysqli_query($connectVariable, $sql);
          $mail->Host       = 'smtp.gmail.com';                            //Set the SMTP server to send through
          $mail->SMTPAuth   = true;                                       //Enable SMTP authentication
          $mail->Username   = 'restaurantmysteria@gmail.com';                   //SMTP username
-         $mail->Password   = '@Mysteria#2';                              //SMTP password
+         $mail->Password   = 'vsdvvakdcmkncfpc';                              //SMTP password
          $mail->SMTPSecure = 'tls';                                   //Enable implicit TLS encryption
          $mail->Port       = 587;  
      
@@ -68,20 +68,22 @@ $insertionResult2 = mysqli_query($connectVariable, $sql);
          $mail->Body = 'click on this link to verify your account '.$link.'';
          
      
-         if( $mail->send())
+        
+         if( !$mail->send())
          {
-             $_SESSION['sent'] = <<<eol
-                     <span id="message" style="font-size:15px; color:green;">we have sent an email to verify your account</span>
-                     eol;
-                     header("Location: http://localhost/Mysteria/shared/signup.php");
+            
+                $_SESSION['sent'] = <<<eol
+                <span id="message" style="font-size:15px; color:red;">Message could not be sent. Mailer Error: {$mail->ErrorInfo}</span>
+                eol;
+                header("Location: http://localhost/Mysteria/shared/signup.php");
+            
          }
-         else 
-         {
-         $_SESSION['sent'] = <<<eol
-         <span id="message" style="font-size:15px; color:red;">Message could not be sent. Mailer Error: {$mail->ErrorInfo}</span>
-         eol;
-         header("Location: http://localhost/Mysteria/shared/signup.php");
-             }
+         else {
+            $_SESSION['sent'] = <<<eol
+            <span id="message" style="font-size:15px; color:green;">we have sent an email to verify your account</span>
+            eol;
+            header("Location: http://localhost/Mysteria/shared/signup.php");
+         }
         
     }
    
