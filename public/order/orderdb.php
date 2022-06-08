@@ -133,7 +133,7 @@ if (isset($_POST['submit'])) {
                 $mail->Host       = 'smtp.gmail.com';                            //Set the SMTP server to send through
                 $mail->SMTPAuth   = true;                                       //Enable SMTP authentication
                 $mail->Username   = 'restaurantmysteria@gmail.com';                   //SMTP username
-                $mail->Password   = '@Mysteria#2';                              //SMTP password
+                $mail->Password   = 'vsdvvakdcmkncfpc';                              //SMTP password
                 $mail->SMTPSecure = 'tls';                                   //Enable implicit TLS encryption
                 $mail->Port       = 587;  
 
