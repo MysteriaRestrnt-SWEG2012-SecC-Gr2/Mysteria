@@ -1,5 +1,6 @@
 <?php
 session_start();
+include '../controller/filter.php';
 if (isset($_POST["signup"])) {
     $UserName = $_POST["Username"];
     $email = $_POST["Email"];
@@ -38,11 +39,12 @@ if (isset($_POST["signup"])) {
 }
 
 if (isset($_POST['signin'])) {
-        $UserNameexist = $_POST["usernamesignin"];
-        $passwordexist = $_POST["passwordsignin"];
+        $UserNameexist = check_input($_POST["usernamesignin"]);
+        $passwordexist =check_input($_POST["passwordsignin"]);
 
         $connectVariable = mysqli_connect('localhost', 'root', '', 'mysteriadb');
-        $passwordexist = mysqli_real_escape_string($connectVariable,$_POST["passwordsignin"]);
+        $passwordexist = mysqli_real_escape_string($connectVariable,$passwordexist);
+        $UserNameexist = mysqli_real_escape_string($connectVariable,$UserNameexist);
         if (!$connectVariable){
         die("The database is not connected");}
 

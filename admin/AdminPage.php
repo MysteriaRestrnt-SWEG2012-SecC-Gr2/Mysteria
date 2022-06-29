@@ -25,7 +25,7 @@ include '../shared/CheckAdminLogin.php';
             <a href="../public/home/home.php">Mysteria site</a>
             <a href="../public/import.php">Import</a>
             <a href="adminAddForm.php">Add admin</a>
-            <a href="try.php">Report</a>
+            <a href="chart.php">Report</a>
             <a href="FoodAddForm.php">Add Menu</a>
             <a href="../shared/logout.php">Log Out </a>
             <form id="srchform" role="search">

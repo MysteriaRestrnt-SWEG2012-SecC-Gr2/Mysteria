@@ -44,7 +44,7 @@
         </div>
     </div>
     <div id="search">
-    <form id="srchform" role="search" method="GET" action="../../shared/searching.php" onsubmit="search()" >
+    <form id="srchform" role="search" method="GET" action="../../shared/searching.php" onsubmit="return search()" >
                 <input type="search" id="query" name="query" placeholder="Search for foods" aria-label="search through site content">
                 <button id="srchbtn" type="submit" name="search"><img id="srchimg"src="../../resources/images/searchwhite.png"></button>
                 <label for="sort">   &nbsp;  &nbsp; Sort By: </label>

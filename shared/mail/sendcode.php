@@ -1,6 +1,7 @@
 <?php 
 session_start();
 require_once '../../db/connectVar.php';
+include '../../controller/filter.php';
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
@@ -12,14 +13,14 @@ $mail = new PHPMailer;
 if (isset($_POST['signup']))
 {
   
-    $UserName = $_POST["Username"];
+    $UserName = check_signup($_POST["Username"],"name");
     if(isset($_SESSION["userID"])){
          $Id=$_SESSION["userID"];
     }
    
-    $email = $_POST["Email"];
-    $password = $_POST["Password"];
-    $cpassword = $_POST["Password2"];
+    $email = check_signup($_POST["Email"],"email");
+    $password = check_signup($_POST["Password"],"psd");
+    $cpassword = check_signup($_POST["Password2"],"");
     //Create an instance; passing `true` enables exceptions
     $conn = mysqli_connect('localhost', 'root', '', 'mysteriadb');
   
@@ -43,25 +44,23 @@ $insertionResult2 = mysqli_query($connectVariable, $sql);
     if(mysqli_num_rows($insertionResult2)>0){
         echo '<script type ="application/JavaScript"> alert ("username is taken"); window.location.href="../signup.php"; </script>'; 
     }else{
-        $insert = ("insert into registration(user_name,user_email,user_password, email_verification_link) 
-        values('$UserName', '$email','$hash', '$vkey')");
-       
-     
-         mysqli_query($conn, $insert);
+      
+
          $link= "<a href= 'http://localhost/Mysteria/shared/mail/verify.php?key=".$email."&token=".$vkey."&user=".$UserName."'>Register Account</a>";
      
         //Enable verbose debug output
         $mail->IsSMTP();   
-        $mail->SMTPDebug = false;                                          //Send using SMTP
-        $mail->Host       = 'smtp.mail.yahoo.com';                     //Set the SMTP server to send through
+        $mail->SMTPDebug = 4;                                          //Send using SMTP
+        $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
         $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-        $mail->Username   = 'restaurantmysteria@yahoo.com';                     //SMTP username
-        $mail->Password   = 'cgybsqosnsctuftr';                               //SMTP password
-        $mail->SMTPSecure = 'ssl';            //Enable implicit TLS encryption
-        $mail->Port       = 465;    
+        $mail->Username   = 'restaurantmysteria@gmail.com';                     //SMTP username
+        $mail->Password   = 'zfahqguufmkoznks'; 
+        //cgybsqosnsctuftr                              //SMTP password
+        $mail->SMTPSecure = 'tls';            //Enable implicit TLS encryption
+        $mail->Port       = 587;    
          
          //Recipients
-         $mail->setFrom('restaurantmysteria@yahoo.com', 'Mysteria Restaurant');
+         $mail->setFrom('restaurantmysteria@gmail.com', 'Mysteria Restaurant');
          $mail->addAddress($email, $UserName);     //Add a recipient
          
          //Content
@@ -72,105 +71,25 @@ $insertionResult2 = mysqli_query($connectVariable, $sql);
      
          if( $mail->send())
          {
-            //  echo "mail has been sent";
+            $insert = ("insert into registration(user_name,user_email,user_password, email_verification_link) 
+            values('$UserName', '$email','$hash', '$vkey')");
+            mysqli_query($conn, $insert);
+
              $_SESSION['sent'] = <<<eol
                      <span id="message" style="font-size:15px; color:green;">we have sent an email to verify your account</span>
                      eol;
-                     header("Location: http://localhost/Mysteria/shared/signup.php");
+                     echo"<script> window.location.assign('http://localhost/Mysteria/shared/signup.php'); </script>";
          }
          else 
          {
-         $_SESSION['sent'] = <<<eol
-         <span id="message" style="font-size:15px; color:green;">Message could not be sent. Mailer Error: {$mail->ErrorInfo}</span>
-         eol;
-         header("Location: http://localhost/Mysteria/shared/signup.php");
+                $_SESSION['sent'] = <<<eol
+                <span id="message" style="font-size:15px; color:red;">Message could not be sent. Mailer Error: {$mail->ErrorInfo}</span>
+                eol;
+                echo"<script> window.location.assign('http://localhost/Mysteria/shared/signup.php'); </script>";
              }
-        
-        
     }
    
     }
 
 
-     if (isset($_POST['sub_btn3'])) 
-    {
-        $conn = mysqli_connect('localhost', 'root', '', 'mysteriadb');
-        if(!$conn){
-            die("The database is not connected");
-        }
-
-        $id=$_POST["sub_btn3"];
-        
-        $UserName=$_POST["newUser"];
-        $new_pass=$_POST["newPassword"];
-        $c_pass=$_POST["Password2"];
-
-        $UserName = $conn-> real_escape_string($UserName);
-        $password = $conn-> real_escape_string($new_pass);
-        $c_pass = $conn-> real_escape_string($c_pass);
-        
-
-        $rand= "SELECT * FROM registration WHERE user_id='$id'";
-        $result= mysqli_query($conn,$rand);
-        $row=mysqli_fetch_assoc($result);
-        $email=$row['user_email'];
-        $hash = password_hash ($c_pass, PASSWORD_DEFAULT);
-
-        $Insertion = "UPDATE registration SET user_name='$UserName', user_password='$hash' WHERE user_email='$email' and user_id='$id'";
-        mysqli_query($conn, $Insertion);
-
-        $sql= "SELECT * FROM registration where user_id='$id'";
-        $insertionResult2 = mysqli_query($conn, $sql);
-        
-        $row=mysqli_fetch_assoc($insertionResult2);
-
-if($Insertion && isset($row['email_verified_at'])){
-    $_SESSION['user']=$UserName;
-    $_SESSION['userID']=$row["user_id"];
-    $_SESSION['email']=$row["user_email"];
-    $_SESSION['user_grp']=$row['user_grp'];            
-    $_SESSION['query']="";
-    $_SESSION['cartCount']=0;
-    $_SESSION['terms']=false;
-    $_SESSION['terms2']=false;
-    $session_id=session_id();
-
-    $sql= "SELECT * FROM registration where user_name='$UserName' and (active_sessions='$session_id' or active_sessions IS NULL or active_sessions=''  )";
-    $insertionResult2 = mysqli_query($conn, $sql);
-    $row=mysqli_fetch_assoc($insertionResult2);
-    
-    if(mysqli_num_rows($insertionResult2)==0){
-        session_unset();
-        echo '<script type ="application/JavaScript"> alert ("this account is already logged in."); window.location.href="../signup.php#Signin"; </script>';
-        // echo "hi";
-    }
-    else if(mysqli_num_rows($insertionResult2)>0){
-        $_SESSION['start'] = time();
-        $sql2="UPDATE registration SET active_sessions='$session_id' WHERE user_name = '$UserName'";
-        $insertion = mysqli_query($conn, $sql2);
-        if( $row['user_grp']=="admin"){
-           
-        header ("Location: ../../admin/AdminPage.php");
-        }
-        else{
-        header ("Location: ../../public/home/home.php");
-        }        
-    }
-}
-else if(!isset($row['email_verified_at'])){
-    $_SESSION['sent'] = <<<eol
-    <span id="message" style="font-size:15px; color:red;">Please verify your account before login.</span>
-    eol;
-    header("Location: http://localhost/Mysteria/shared/signup.php");
-
-}
-else{
-    $_SESSION['sent'] = <<<eol
-    <span id="message" style="font-size:15px; color:red;">Your Username or Password is invalid.</span>
-    eol;
-    header("Location: http://localhost/Mysteria/shared/signup.php");
-
-}
-
-    }
 ?>

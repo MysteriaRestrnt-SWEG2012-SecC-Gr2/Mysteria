@@ -33,7 +33,7 @@ if($_GET['key'] && $_GET['token'])
             }
         } else {
             $_SESSION['sent'] = <<<eol
-            <span id="message" style="font-size:15px; color:red;">This email has been not registered with us </span>
+            <span id="message" style="font-size:15px; color:red;">This user has been not registered with us </span>
             eol;
             header("Location: http://localhost/Mysteria/shared/signup.php");
         }

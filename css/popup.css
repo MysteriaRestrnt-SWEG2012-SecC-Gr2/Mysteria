@@ -59,7 +59,9 @@
     display: block;
 }
 
-#bt_close {
+#bt_close1,
+#bt_close2,
+#bt_close3 {
     position: fixed;
     top: 9%;
     left: 76%;

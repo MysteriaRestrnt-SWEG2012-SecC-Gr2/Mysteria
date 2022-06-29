@@ -10,7 +10,6 @@ $connectVariable = mysqli_connect('localhost', 'root', '', 'mysteriadb');
 
 
 session_unset();
-
 session_destroy();
 
 header("Location: signup.php");

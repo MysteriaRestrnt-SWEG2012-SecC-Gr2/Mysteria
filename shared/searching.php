@@ -3,6 +3,7 @@ session_start();
 include 'CheckLogin.php';
 require_once '../db/connectVar.php';
 include 'searchHeader.php';
+include '../controller/filter.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -52,7 +53,7 @@ include 'searchHeader.php';
       <?php
       if(isset($_GET['search']))
        {
-                $srchQuery=$_GET['query'];
+                $srchQuery= check_input($_GET['query']);
                 if(empty($srchQuery)){
                     
                     $srchQuery=$_SESSION['query'];

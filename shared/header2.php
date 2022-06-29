@@ -12,8 +12,6 @@
             <li><a href="../event/events.php#popup1">Event reservation </a></li><hr/>
             <li><a href="../reservation/cancelreservation.php">Cancel Table reservation </a></li><hr/>
             <li><a href="../event/cancel event reservation.php">Cancel Event reservation </a></li><hr/>
-            <!-- <li><a href="../delivery/delivery.php">Delivery </a></li><hr/>
-            <li><a href="../order/order2.php">Food Order </a></li><hr/> -->
             <li><a href="../../shared/cart.php">Cart:  <?php   $var=$_SESSION['cartCount'];  echo $var;?></a></li><hr/>
             <li><a href="../settings/acc_sett.php">Account settings </a></li><hr/>
             <li><a href="../../shared/logout.php">Log Out </a></li><hr/>
@@ -47,7 +45,7 @@
             </div>
         </div>
         <div id="search">
-        <form id="srchform" role="search" method="GET" action="../../shared/searching.php" onsubmit="search()" >
+        <form id="srchform" role="search" method="GET" action="../../shared/searching.php" onsubmit="return search()" >
                 <input type="search" id="query" name="query" placeholder="Search for foods" aria-label="search through site content">
                 <button id="srchbtn" type="submit" name="search"><img id="srchimg"src="../../resources/images/searchwhite.png"></button>
                 <label for="sort">   &nbsp;  &nbsp; Sort By: </label>

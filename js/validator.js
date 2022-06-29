@@ -215,3 +215,11 @@ function checkOptions2(select) {
         otherInput.style.display = 'none';
     }
 }
+
+function search() {
+    var srch = document.getElementById("query");
+    if (srch == "" || srch == null) {
+        alert("Sorry search input cannot be empty");
+        return false;
+    }
+}
