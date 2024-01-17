@@ -4,11 +4,21 @@ use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
 //Load Composer's autoloader
-require 'C:/xampp/composer/vendor/autoload.php';
+require '../vendor/autoload.php';
 $mail = new PHPMailer;
 include 'CheckSignup.php';
 include '../controller/filter.php';
 require_once '../db/connectVar.php';
+$client_id = "453298402760-hhqlqhoppn1m0optrju4gkm3cdk86gg7.apps.googleusercontent.com";
+$client_secret = "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";
+$redirect_url = "http://localhost/Mysteria-main/public/home/home.php";
+
+$client = new Google_Client();
+$client->setClientId($client_id);
+$client->setClientSecret($client_secret);
+$client->setRedirectUri($redirect_url);
+$client->addScope("email");
+$client->addScope("profile");
 
 ?>
 <!DOCTYPE html>
@@ -21,6 +31,11 @@ require_once '../db/connectVar.php';
     <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous" /> -->
     <link rel="stylesheet" href="../css/stylesignup.css">
     <link rel="stylesheet" href="../css/popup.css">
+    <link rel="stylesheet" href="../css/basic icon/icon_font.css">
+    <link rel="stylesheet" href="../css/ecommerce icon/icon_ecommerce.css">
+    <link rel="stylesheet" href="../css/weather icon/weather_style.css">
+    <link rel="stylesheet" href="../css/fontawesome-free-6.5.1-web/css/all.css">
+    <!-- <link rel="stylesheet" href="../css/all.min.css"> -->
     <script src="../js/signup.js">
       
     </script>
@@ -54,10 +69,12 @@ require_once '../db/connectVar.php';
                        
                 <p class="social-text"> Or Sign in with social platform</p>
                 <div class="social-media">
-                    <a href="#" class="social-icon"> <i class="fab fa-facebook"></i> </a>
-                    <a href="" class="social-icon"> <i class="fab fa-twitter"></i> </a>
-                    <a href="" class="social-icon"> <i class="fab fa-google"></i> </a>
-                    <a href="" class="social-icon"> <i class="fab fa-linkedin-in"></i> </a>
+                    <?php
+                    echo '<a href="#" class="social-icon"> <i class="fab fa-facebook"></i> </a>';
+                    echo '<a href="" class="social-icon"> <i class="fab fa-twitter"></i> </a>';
+                    echo '<a href="'. $client->createAuthUrl() .'" class="social-icon"> <i class="fab fa-google"></i> </a>';
+                    echo '<a href="" class="social-icon"> <i class="fab fa-linkedin-in"></i> </a>';
+                    ?>
                 </div><br>
                 <a href="#myForm" onclick="openForm1()"><font color="black"> Forgot password?</font></a> 
                 <p class="account-text">Don't have an account? <a href="#" id="sign-up-btn2">Sign-up</a> </p>
@@ -84,10 +101,12 @@ require_once '../db/connectVar.php';
                 <input type="submit" name="signup" value="Sign up" class="btn">
                 <p class="social-text"> Or Sign up with social platform</p>
                 <div class="social-media">
-                    <a href="#" class="social-icon"> <i class="fab fa-facebook"></i> </a>
-                    <a href="" class="social-icon"> <i class="fab fa-twitter"></i> </a>
-                    <a href="" class="social-icon"> <i class="fab fa-google"></i> </a>
-                    <a href="" class="social-icon"> <i class="fab fa-linkedin-in"></i> </a>
+                <?php
+                    echo '<a href="#" class="social-icon"> <i class="fab fa-facebook"></i> </a>';
+                    echo '<a href="" class="social-icon"> <i class="fab fa-twitter"></i> </a>';
+                    echo '<a href="'. $client->createAuthUrl() .'" class="social-icon"> <i class="fab fa-google"></i> </a>';
+                    echo '<a href="" class="social-icon"> <i class="fab fa-linkedin-in"></i> </a>';
+                    ?>
                 </div>
                 <p class="account-text">Already have an account? <a href="#" id="sign-in-btn2">Sign-in</a> </p>
 
@@ -196,7 +215,7 @@ require_once '../db/connectVar.php';
                     }
                     
                 
-                    $conn = mysqli_connect('localhost', 'root', '', 'mysteriadb');
+                    $conn = mysqli_connect('localhost', 'root', '', 'mysteriadb','3306');
                     $sql1= "SELECT * FROM registration WHERE  user_id='$id'";
                     $insertionResult = mysqli_query($conn, $sql1);
 
@@ -248,7 +267,7 @@ require_once '../db/connectVar.php';
 
                                 $sendd=<<<eol
                                     <script type="text/javascript">
-                                    window.location.replace('http://localhost/Mysteria/shared/signup.php#myForm');
+                                    window.location.replace('http://localhost/Mysteria-main/shared/signup.php#myForm');
                                     console.log("hi mess not sent");
                                         openForm1();
                                     </script>
@@ -264,7 +283,7 @@ require_once '../db/connectVar.php';
                                             eol;
                             echo <<<eol
                                     <script type="text/javascript">
-                                         window.location.replace('http://localhost/Mysteria/shared/signup.php');
+                                         window.location.replace('http://localhost/Mysteria-main/shared/signup.php');
                                     </script>
                                     eol;
                         exit();
@@ -297,7 +316,7 @@ require_once '../db/connectVar.php';
 
                     $id=$_POST['sub_btn2'];
                     $inputCode=check_forgot($_POST['code'],"code");
-                    $conn = mysqli_connect('localhost', 'root', '', 'mysteriadb');
+                    $conn = mysqli_connect('localhost', 'root', '', 'mysteriadb','3306');
                         if(!$conn)
                         {
                             die("The database is not connected");
@@ -331,7 +350,7 @@ require_once '../db/connectVar.php';
                             </span><br>
                             eol;
                             echo '<script type ="application/JavaScript"> 
-                            window.location.replace("http://localhost/Mysteria/shared/signup.php#pass_reset2");
+                            window.location.replace("http://localhost/Mysteria-main/shared/signup.php#pass_reset2");
                             console.log("code wrong");
                             openForm2();
                             </script>'; 
@@ -374,7 +393,7 @@ require_once '../db/connectVar.php';
   <?php
   if (isset($_POST['sub_btn3'])) 
   {
-      $conn = mysqli_connect('localhost', 'root', '', 'mysteriadb');
+      $conn = mysqli_connect('localhost', 'root', '', 'mysteriadb','3306');
       if(!$conn){
           die("The database is not connected");
       }
@@ -396,7 +415,7 @@ $insertionResult3 = mysqli_query($connectVariable, $sql);
         $_SESSION['sent_forgotPN'] = "username is taken";
         $err=<<<eol
               <script type="text/javascript">
-               window.location.replace('http://localhost/Mysteria/shared/signup.php#pass_reset3');
+               window.location.replace('http://localhost/Mysteria-main/shared/signup.php#pass_reset3');
                console.log("wrong name");
                     openForm3();
               </script>
@@ -434,14 +453,14 @@ $insertionResult3 = mysqli_query($connectVariable, $sql);
               
             if (mysqli_num_rows($insertionResult2)==0) {
                 session_unset();
-                echo '<script type ="application/JavaScript"> alert ("this account is already logged in.");  window.location.replace("http://localhost/Mysteria/shared/signup.php"); </script>';
+                echo '<script type ="application/JavaScript"> alert ("this account is already logged in.");  window.location.replace("http://localhost/Mysteria-main/shared/signup.php"); </script>';
             // echo "hi";
             } elseif (mysqli_num_rows($insertionResult2)>0) {
                 $_SESSION['start'] = time();
                 $sql2="UPDATE registration SET active_sessions='$session_id' WHERE user_name = '$UserName'";
                 $insertion = mysqli_query($conn, $sql2);
                 if ($row['user_grp']=="admin") {
-                    echo"<script> window.location.replace('http://localhost/Mysteria/shared/signup.php'); </script>";
+                    echo"<script> window.location.replace('http://localhost/Mysteria-main/shared/signup.php'); </script>";
                     header("Location: ../../admin/AdminPage.php");
                 } else {
                     header("Location: ../../public/home/home.php");
@@ -452,12 +471,12 @@ $insertionResult3 = mysqli_query($connectVariable, $sql);
             $_SESSION['sent'] = <<<eol
               <span id="message" style="font-size:15px; color:red;">Please verify your account before login.</span>
               eol;
-            echo"<script> window.location.replace('http://localhost/Mysteria/shared/signup.php'); </script>";
+            echo"<script> window.location.replace('http://localhost/Mysteria-main/shared/signup.php'); </script>";
         } else {
             $_SESSION['sent'] = <<<eol
               <span id="message" style="font-size:15px; color:red;">Your Username or Password is invalid.</span>
               eol;
-            echo"<script> window.location.replace('http://localhost/Mysteria/shared/signup.php'); </script>";
+            echo"<script> window.location.replace('http://localhost/Mysteria-main/shared/signup.php'); </script>";
         }
     }
   }
