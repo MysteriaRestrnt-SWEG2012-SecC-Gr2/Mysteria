@@ -18,7 +18,7 @@ include '../../shared/CheckLogin.php';
 
 <body>
 <?php include '../../shared/event_header.php';?>
-    <main>
+<main>
         <div class="full-page">
             <div class="sub-page">
                 <div class="row">
@@ -31,69 +31,79 @@ include '../../shared/CheckLogin.php';
                                             <h3 class="main-heading">Reservation Form</h3>
                                         </center><br>
                                     </div>
-                                   <form id="form2" class="login-form" method="post"   action="reserved.php" onsubmit="return eventValidateForm()">
-                                   <div class="form-holder">
-                                   <big><label for="CustName">Customer:             <?php $var=$_SESSION['user']; echo"$var"?></label></big><br>
+                                    <form id="form2" class="login-form" method="post" action="reserved.php" onsubmit="return eventValidateForm()">
+                                        <div class="form-holder">
+                                            <big><label for="CustName">Customer: <?php $var=$_SESSION['user']; echo"$var"?></label></big><br>
 
-                                           <div class="form-control">
-                                               <label for="date">Date for reservation:</label>
-                                               <input type="date" name="date" id="date"  min="<?php $d=$date=date_create(date('Y-m-d')); date_sub($d,date_interval_create_from_date_string("0 days")); echo date_format($d,"Y-m-d"); ?>" class='input-field'>
-          
-                                           </div>
-                                           <div class="form-control">
-                                           <label for="time">Time for reservation:</label>
-                                               <input type="time" name="time" id="time" class='input-field'>
-                                               <i class="fas fa-check-circle"></i>
-                                               <i class="fas fa-exclamation-circle"></i> 
-                                           </div>
-                                           <div class="form-control">
-                                               <label for="occasion">Occasions:</label><br>
-                                               <select class='input-field' name="occasion" id="quantity">
-                                               <option type="radiobutton"  id="occasion1" value="Bridal Shower">Bridal Shower <br>
-                                               <option type="radiobutton"  id="occasion2" value="Wedding">Wedding <br>
-                                               <option type="radiobutton"  id="occasion3" value="Baby Shower">Baby Shower <br>
-                                               <option type="radiobutton"  id="occasion4" checked="checked" value="Birthday Party">Birthday Party <br>
-                                               <option type="radiobutton"  id="occasion5" value="Meeting">Meeting <br>
-                                               <option type="radiobutton"  id="occasion6" value="Charity Event ">Charity Event <br>
-                                               <option type="radiobutton"  id="occasion8" value="Holiday Parties">Holiday Parties<br>
-                                               <option type="radiobutton"  id="occasion7" value="Anniversary">Anniversary<br>
-                                            </select>
-                                               <i class="fas fa-check-circle"></i>
-                                               <i class="fas fa-exclamation-circle"></i>
-                                           </div>
-                                           <div class="form-control">
-                                           <div class="form-control">
-                                            <label for="people">How many people?</label>
-                                             <input type="number" name="people" id="people" class='input-field' placeholder= "Number of people" min=20 max=500><br>
-                                            <i class="fas fa-check-circle"></i>
-                                            <i class="fas fa-exclamation-circle"></i>
+                                            <div class="form-control">
+                                                <label for="date">Date for reservation:</label>
+                                                <input type="date" name="date" id="date" min="<?php $d=$date=date_create(date('Y-m-d')); date_sub($d,date_interval_create_from_date_string("0 days")); echo date_format($d,"Y-m-d"); ?>" class='input-field'>
+                                            </div>
 
+                                            <div class="form-control">
+                                                <label for="time">Time for reservation:</label>
+                                                <input type="time" name="time" id="time" class='input-field'>
+                                                <i class="fas fa-check-circle"></i>
+                                                <i class="fas fa-exclamation-circle"></i>
+                                            </div>
+
+                                            <div class="form-control">
+                                                <label for="occasion">Occasions:</label><br>
+                                                <select class='input-field' name="occasion" id="occasion">
+                                                    <option value="Bridal Shower">Bridal Shower</option>
+                                                    <option value="Wedding">Wedding</option>
+                                                    <option value="Baby Shower">Baby Shower</option>
+                                                    <option value="Birthday Party" selected="selected">Birthday Party</option>
+                                                    <option value="Meeting">Meeting</option>
+                                                    <option value="Charity Event">Charity Event</option>
+                                                    <option value="Holiday Parties">Holiday Parties</option>
+                                                    <option value="Anniversary">Anniversary</option>
+                                                </select>
+                                                <i class="fas fa-check-circle"></i>
+                                                <i class="fas fa-exclamation-circle"></i>
+                                            </div>
+
+                                            <div class="form-control">
+                                                <label for="people">How many people?</label>
+                                                <input type="number" name="people" id="people" class='input-field' placeholder="Number of people" min="20" max="500">
+                                                <i class="fas fa-check-circle"></i>
+                                                <i class="fas fa-exclamation-circle"></i>
+                                            </div>
+
+                                            <div class="form-control">
+                                                <label for="additional_services">Additional Services:</label><br>
+                                                <input type="checkbox" name="catering" id="catering" value="Catering"> Catering<br>
+                                                <input type="checkbox" name="decorations" id="decorations" value="Decorations"> Decorations<br>
+                                                <input type="checkbox" name="entertainment" id="entertainment" value="Entertainment"> Entertainment<br>
+                                            </div>
+
+                                            <div class="form-control">
+                                                <label for="phone1">Phone Number:</label><br>
+                                                <select name="phone1" id="phone1">
+                                                    <option value="+251" class='input-field'>+251</option>
+                                                    <option value="+12" class='input-field'>+120</option>
+                                                </select>
+                                                <input type="tel" id="phone2" name="phone2" class='input-field' placeholder="967882862">
+                                                <i class="fas fa-check-circle"></i>
+                                                <i class="fas fa-exclamation-circle"></i>
+                                            </div>
+
+                                            <div class="form-control">
+                                                <label for="card">Payment Type:</label>
+                                                <select name="card_type" id="card">
+                                                    <option value="visa card">Visa Card</option>
+                                                    <option value="master card">Master Card</option>
+                                                    <option value="credit card">Credit Card</option>
+                                                    <option value="paypal">PayPal</option>
+                                                </select><br>
+
+                                                <label for="acc_number">Account:</label>
+                                                <input type="text" name="account_number" id="acc_number" class='input-field' placeholder="Enter account number">
+                                            </div>
+
+                                            <input type='submit' name="Treserve" class='submit-button' value="Reserve now">
                                         </div>
-                                         <div>
-                                                   <label for="phone1">Phone Number:</label>
-                                                   <br><small>Error message</small><br>
-                                                   <select name="phone1" id="phone1">
-                                                       <option value="+251" class='input-field'>+251</option>
-                                                       <option value="+12" class='input-field'>+120</option>
-                                                   </select>
-                                                   <input type="tel" id="phone2" name="phone2" class='input-field' placeholder="967882862">
-                                                   <i class="fas fa-check-circle"></i>
-                                                   <i class="fas fa-exclamation-circle"></i>
-                                                   <label for="card">Payment Type:</label>
-                                                    <select name="card_type" id="card">
-                                                        <option value="visa card">visa card</option>
-                                                        <option value="master card">master card</option>
-                                                        <option value="credit card">credit card</option>
-                                                        <option value="paypall">PayPall</option>
-                                                    </select><br>
-                                                    <label for="acc_number">account:</label>
-                                                    <input type="text" name="account_number" id="acc_number"  class='input-field' placeholder="Enter account number" ><br>
-                                               </div>
-                                           </div>
-                                           <input type='submit' name="Treserve"  class='submit-button' value="Reserve now">
-                                        </div>
-                                        
-                                </form>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -101,8 +111,8 @@ include '../../shared/CheckLogin.php';
                 </div>
             </div>
         </div>
-           
     </main>
+
 <section>
     <div class="popup" id="popup4">
         <div class="feedback-body">
