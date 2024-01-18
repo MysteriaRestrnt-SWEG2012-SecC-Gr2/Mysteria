@@ -25,8 +25,14 @@ include '../shared/CheckAdminLogin.php';
             <a href="../public/home/home.php">Mysteria site</a>
             <a href="../public/import.php">Import</a>
             <a href="adminAddForm.php">Add admin</a>
-            <a href="chart.php">Report</a>
-            <a href="FoodAddForm.php">Add Menu</a>
+            <a href="report.php">Report</a>
+            <div class="dropdown">
+                <button class="dropbtn">Menu</button>
+                <div class="dropdown-content">
+                    <a href="FoodAddForm.php">Add Menu</a>
+                    <a href="FoodEditForm.php">Edit Menu</a>
+                </div>
+            </div>
             <a href="../shared/logout.php">Log Out </a>
             <form id="srchform" role="search">
                 <input type="search" id="query" name="q" placeholder="Search" aria-label="search through site content">
@@ -34,10 +40,11 @@ include '../shared/CheckAdminLogin.php';
             </form>
         </div>
         <div>
-            <label><?php
-            $var=$_SESSION['user'];
-            echo $var;
-            ?>
+            <label>
+                <?php
+                $var=$_SESSION['user'];
+                echo $var;
+                ?>
             </label>
         </div>
     </header>
