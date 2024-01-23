@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http_equiv="refresh" content="12">
+    <meta name="charset" content="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Tsedey">
+    <meta name="description" content="webpage for Feed back">
+    <meta name="keywords" content="comment,mysteria">
+    <title>Feed back page</title>
+</head>
+<body bgcolor="PaleGoldenRod" link="white">
+<table cellpadding="2" cellspacing="1" width="100%">
+    <tr>
+        <th  align=left>
+            <a href="../home/home.html"><img src="../../resources/images/MLOGO.png" width=190px; height=115px; alt="Mysteria Logo" align=center></a>
+        </th>
+        <th>
+            <marquee direction="left"><font face="Old English Text MT" color="saddlebrown" size="5"><h1 valign="top" >Mysteria Restaurant  </h1></font></marquee><hr color=saddlebrown>
+        </th>
+        <th align="center" width="18%" bgcolor="saddlebrown">
+            <font  color=saddlebrown size=4 face=simsun>
+                <ul>
+                    <li><a href="../home/home.html"><font face=simsun color=seashell>Home</font></a></li>
+                    <li><a href="../review/about us2.html"><font face=simsun color=seashell>About Us</font></a></li>
+                    <li><a href="../review/contact.html"><font  face=simsun color=seashell>Contact Us</font></a></li>
+                    <li><a href="../review/Feedback2.html"><font face=simsun color=seashell>Feedback</font></a></li>
+                </ul>
+            </font>
+        </th>
+    </tr>
+    <tr height="700px" bgcolor="PaleGoldenRod">
+        <td  valign="top" width="15%"  bgcolor=saddlebrown >
+            <font face=pristina size="5"><h2 align=center>Navigation</h2></font>
+            <font color=saddlebrown size=3.5 >
+            <ul>
+                <li><a href="../menu_bar/FoodMenu.html"><font face=simsun color=seashell>Food Menu</font></a></li><hr>
+                <li><font face=simsun color=seashell>Reservation</font></a><hr>
+                    <ul>
+                        <li><a href="../reservation/terms and conditions.html"><font face=simsun color=seashell>Table reservation</font></a></li><hr>
+                        <li><a href="../event/events terms and conditions.html"><font face=simsun color=seashell>Event reservation</font></a></li><hr>
+                    </ul>
+                </li>
+                <li>
+                    <font face=simsun color=seashell>Cancel reservation</font><hr>
+                    <ul>
+                        <li><a href="../reservation/cancelreservation.html"><font face=simsun color=seashell>Cancel Table reservation</font></a></li><hr>
+                        <li><a href="../event/cancel event reservation.html"><font face=simsun color=seashell>Cancel Event reservation</font></a></li><hr>
+                    </ul>
+
+                </li>
+                <li><a href="../delivery/delivery.html"><font face=simsun color=seashell>Delivery</font></a></li><hr>
+                <li><a href="../order/order2.html"><font face=simsun color=seashell>Food Order</font></a></li><hr>
+            </ul>
+            </font>
+        </td>
+        <td background="../../resources/images/feedback.jpg" rowspan="3">
+            <form  method="post" action="feedback next page.html">
+                <table width="100%" align="center">
+                    <tr>
+                        <td colspan="2" align="center">
+                            <hr><h4><font size=7 color=white align=center face=Pristina>CUSTOMER FEEDBACK FORM</font></h4><hr>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" align="center">
+                            <font size="4" color="white" ><strong>Please fill this form and help us to improve our restaurant</strong></font>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td valign="top" align=center><font size=5 color=white face=Pristina><label for="name">Full name:</label></font></td>
+                        <td><input type="text" id="name" name="First name" placeholder="Full name" required></td>
+                    </tr>
+                    <tr>
+                        <td valign="top" align=center><font size=5 color=white face=Pristina><label for="email">E-mail:</label></font></td>
+                        <td><input type="email" id="email" name="email" placeholder="Email" required></td>
+                    </tr>
+                    <tr><td valign="top" align=center><font size=5 color=white face=Pristina><label for="comment">Comment:</label></font> </td>
+                        <td><textarea type="text" name="comment" id="comment" placeholder="Enter your comment here" required></textarea></td>
+                    </tr>
+                    <tr>
+                        <td valign="top" align=center><font size=5 color=white face=Pristina><label for="thingsliked">choose things you liked</label></font></td>
+                            <td>
+                                <input type="checkbox" name="thingsliked1" id="thingsliked" value="Vegetarian food">Vegetarian food<br>
+                                <input type="checkbox" name="thingsliked2" value="Meataterian food">Meataterian food<br>
+                                <input type="checkbox" name="thingsliked3" value="Desssert">Dessert<br>
+                                <input type="checkbox" name="thingsliked4" value="Appetizer">Appetizer<br>
+                                <input type="checkbox" name="thingsliked5" value="The delivery">The delivery<br>
+                                <input type="checkbox" name="thingsliked6" value="Hot drinks">Hot drinks<br>
+                                <input type="checkbox" name="thingsliked7" value="Juices">Juices<br>
+                                <input type="checkbox" name="thingsliked8" value="Milkshakes">Milkshakes<br>
+                                <input type="checkbox" name="thingsliked9" value="Alchols">Alchols<br>
+                                <input type="checkbox" name="thingsliked10" value="The Service">Service
+                            </td>
+                    </tr>
+                    <tr>
+                        <td valign="top" align=center><font size=5 color=white face=Pristina><label for="rating">Rate Mysteria:</label></font></td>
+                           <td> <SELECT name="rating" id="rating" >
+                                <option value="amaizing" selected> Amazing</option>
+                                <option value="5_stars">*****</option>
+                                <option value="4_stars">****</option>
+                                <option value="3_stars">***</option>
+                                <option value="2_stars">**</option>
+                                <option value="1_star">*</option>
+                                <option value="awful">Awful</option>
+                            </SELECT></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" align="center">
+                            <font size=5 face=Pristina><input type="submit" value="Send"></font>
+                            <input type="reset" value="clear">
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </td>
+        <td rowspan="3" valign="top" width="18%" height="694px" bgcolor="whitesmoke">
+            <br>
+            <form id="form" role="search">
+                <input type="search" size="15" id="query" name="q" placeholder="Search" aria-label="search through site content">
+                <button>Search</button>
+            </form>
+            <hr>
+        </td>
+    </tr>
+</table>
+<table id="footer" valign="bottom" width="100%" cellspacing="0">
+    <tr>
+        <td align="left">
+            <hr color="saddlebrown"> <hr color="saddlebrown">
+            <font size="4" color="saddlebrown">Follow us on</font>
+            <font size="6">
+                <a href="https://www.instagram.com"><img src="../../resources/images/insta2.png" width="20px" height="20px"></a>|
+                <a href="https://www.facebook.com/103469795537169/posts/103501355534013"><img src="../../resources/images/fb2.png" width="20px" height="20px"></a>|
+                <a href="https://t.me/mysteriaRestaurant"><img src="../../resources/images/tg2.png" width="20px" height="20px"></a>|
+                <a href="https://www.twitter.com"><img src="../../resources/images/twitter2.png" width="20px" height="20px"></a>
+            </font>
+        </td>
+    </tr>
+    <tr>
+        <td align="center" colspan="2">Copyright &copy;Mysteria 2021/22, all rights reserved</td>
+    </tr>
+</table>
+
+</body>
+</html>
