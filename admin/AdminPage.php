@@ -27,7 +27,6 @@ include '../shared/CheckAdminLogin.php';
             <a href="adminAddForm.php">Add admin</a>
             <a href="report.php">Report</a>
             <a href="FoodAddForm.php">Add Menu</a>
-            <a href="edit.php">Edit Menu</a>
 
             <a href="../shared/logout.php">Log Out </a>
             <form id="srchform" role="search">
