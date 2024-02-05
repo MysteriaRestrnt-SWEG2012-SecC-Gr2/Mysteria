@@ -65,6 +65,12 @@ include '../../shared/CheckLogin.php';
                                             <i class="fas fa-check-circle"></i>
                                             <i class="fas fa-exclamation-circle"></i>
                                         </div>
+                                        <div class="form-control">
+                                            <label for="additional_services">Additional Services:</label><br>
+                                            <input type="checkbox" name="catering" id="catering" value="Catering"> Catering<br>
+                                            <input type="checkbox" name="decorations" id="decorations" value="Decorations"> Decorations<br>
+                                            <input type="checkbox" name="entertainment" id="entertainment" value="Entertainment"> Entertainment<br>
+                                        </div>
                                         <div>
                                             <label for="phone1">Phone Number:</label>
                                             <br><small>Error message</small><br>
