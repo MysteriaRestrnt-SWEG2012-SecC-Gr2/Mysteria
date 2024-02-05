@@ -1,17 +1,20 @@
 <?php
+
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
-//Load Composer's autoloader
 require '../vendor/autoload.php';
+require_once '../vendor/facebook/graph-sdk/src/Facebook/autoload.php';
+
 $mail = new PHPMailer;
 include 'CheckSignup.php';
 include '../controller/filter.php';
 require_once '../db/connectVar.php';
+
 $client_id = "453298402760-hhqlqhoppn1m0optrju4gkm3cdk86gg7.apps.googleusercontent.com";
 $client_secret = "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";
-$redirect_url = "http://localhost/Mysteria-main/public/home/home.php";
+$redirect_url = "http://localhost/Mysteria/public/home/home.php";
 
 $client = new Google_Client();
 $client->setClientId($client_id);
@@ -19,6 +22,16 @@ $client->setClientSecret($client_secret);
 $client->setRedirectUri($redirect_url);
 $client->addScope("email");
 $client->addScope("profile");
+
+$fb = new Facebook\Facebook([
+    'app_id' => '943566510716363',
+    'app_secret' => '1663d2d299a757af03b5f04023737645',
+    'default_graph_version' => 'v14.0',
+]);
+
+$helper = $fb->getRedirectLoginHelper();
+$loginUrl = $helper->getLoginUrl('http://localhost/Mysteria/login-callback.php', ['email']);
+
 
 ?>
 <!DOCTYPE html>
@@ -37,7 +50,7 @@ $client->addScope("profile");
     <link rel="stylesheet" href="../css/fontawesome-free-6.5.1-web/css/all.css">
     <!-- <link rel="stylesheet" href="../css/all.min.css"> -->
     <script src="../js/signup.js">
-      
+
     </script>
     <title>Document</title>
 </head>
@@ -55,32 +68,34 @@ $client->addScope("profile");
                     <i class="fas fa-lock"></i>
                     <input type="password" placeholder="Password" name="passwordsignin" required>
                 </div>
-                <?php if(isset($_SESSION['sent'])){
-                    $var=$_SESSION['sent'];
+                <?php if (isset($_SESSION['sent'])) {
+                    $var = $_SESSION['sent'];
                     echo $var;
                     unset($_SESSION['sent']);
-                }?>
-                <span style="color:red;"><?php if(isset($_SESSION['sent_signup'])){
-                    $var=$_SESSION['sent_signup'];
-                    echo $var;
-                    unset($_SESSION['sent_signup']);
-                }?></span>     
+                } ?>
+                <span style="color:red;"><?php if (isset($_SESSION['sent_signup'])) {
+                                                $var = $_SESSION['sent_signup'];
+                                                echo $var;
+                                                unset($_SESSION['sent_signup']);
+                                            } ?></span>
                 <input type="submit" name="signin" value="Login" class="btn">
-                       
+
                 <p class="social-text"> Or Sign in with social platform</p>
                 <div class="social-media">
                     <?php
-                    echo '<a href="#" class="social-icon"> <i class="fab fa-facebook"></i> </a>';
-                    echo '<a href="" class="social-icon"> <i class="fab fa-twitter"></i> </a>';
-                    echo '<a href="'. $client->createAuthUrl() .'" class="social-icon"> <i class="fab fa-google"></i> </a>';
-                    echo '<a href="" class="social-icon"> <i class="fab fa-linkedin-in"></i> </a>';
+                    echo '<a href="' . $loginUrl . '"> <img src="../resources/images/fb2.png" alt="Facebook"> </a>';
+                    echo '<a href="' . $client->createAuthUrl() . '" class="social-icon"> <img src="../resources/images/g2.png" alt="Google"> </a>';
+                    echo '<a href="" > <img src="../resources/images/twitter2.png" alt="Twitter"> </a>';
+                    echo '<a href="" > <img src="../resources/images/tg2.png" alt="telegram"> </a>';
                     ?>
                 </div><br>
-                <a href="#myForm" onclick="openForm1()"><font color="black"> Forgot password?</font></a> 
+                <a href="#myForm" onclick="openForm1()">
+                    <font color="black"> Forgot password?</font>
+                </a>
                 <p class="account-text">Don't have an account? <a href="#" id="sign-up-btn2">Sign-up</a> </p>
             </form>
             <form action="mail/sendcode.php" method="POST" class="sign-up" onsubmit="return confPsd()">
-                <h2 class="title"  >Sign up</h2>
+                <h2 class="title">Sign up</h2>
                 <div class="inputs">
                     <i class="fas fa-user"></i>
                     <input type="Username" placeholder="Username" name="Username" id="name">
@@ -101,11 +116,11 @@ $client->addScope("profile");
                 <input type="submit" name="signup" value="Sign up" class="btn">
                 <p class="social-text"> Or Sign up with social platform</p>
                 <div class="social-media">
-                <?php
-                    echo '<a href="#" class="social-icon"> <i class="fab fa-facebook"></i> </a>';
-                    echo '<a href="" class="social-icon"> <i class="fab fa-twitter"></i> </a>';
-                    echo '<a href="'. $client->createAuthUrl() .'" class="social-icon"> <i class="fab fa-google"></i> </a>';
-                    echo '<a href="" class="social-icon"> <i class="fab fa-linkedin-in"></i> </a>';
+                    <?php
+                    echo '<a href="' . $loginUrl . '"> <img src="../resources/images/fb2.png" alt="Facebook"> </a>';
+                    echo '<a href="' . $client->createAuthUrl() . '" class="social-icon"> <img src="../resources/images/g2.png" alt="Google"> </a>';
+                    echo '<a href="" > <img src="../resources/images/twitter2.png" alt="Twitter"> </a>';
+                    echo '<a href="" > <img src="../resources/images/tg2.png" alt="telegram"> </a>';
                     ?>
                 </div>
                 <p class="account-text">Already have an account? <a href="#" id="sign-in-btn2">Sign-in</a> </p>
@@ -127,80 +142,80 @@ $client->addScope("profile");
                     <h3>New to Mysteria Restaurant </h3>
                     <p>Get started with creating your free account</p>
                     <button class="btn" id="sign-up-btn" name="submit2">Sign up</button>
-                    
+
                 </div>
                 <div>
                     <img src="../resources/images/signup.svg" alt=" signup" class="image">
                 </div>
             </div>
         </div>
-  </div>
+    </div>
 
 
-<div class="form-popup form-container" id="myForm">
+    <div class="form-popup form-container" id="myForm">
 
-  <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST">
-        <div class="pass_reset" id="pass_reset1">
-            <h2 class="title" id="Res_title4"  >Password Resetting form</h2>
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
+            <div class="pass_reset" id="pass_reset1">
+                <h2 class="title" id="Res_title4">Password Resetting form</h2>
 
-            <div class="inputs">
-            <i class="fas fa-envelope"></i>
-                <input type="text" placeholder="insert username or email"  name="srchUser">
+                <div class="inputs">
+                    <i class="fas fa-envelope"></i>
+                    <input type="text" placeholder="insert username or email" name="srchUser">
+                </div>
+                <span style="color:red;"><?php if (isset($_SESSION['sent_forgot1'])) {
+                                                $var = $_SESSION['sent_forgot1'];
+                                                echo $var;
+                                                unset($_SESSION['sent_forgot1']);
+                                            } ?></span><br>
+                <button type="submit" id="cl_btn2" class="btn" name="sub_btn4">search</button>
+                <button type="button" class="btn cancel" id="bt_close1" onclick="closeForm()">&times;</button>
             </div>
-            <span style="color:red;"><?php if(isset($_SESSION['sent_forgot1'])){
-                    $var=$_SESSION['sent_forgot1'];
-                    echo $var;
-                    unset($_SESSION['sent_forgot1']);
-                }?></span><br> 
-            <button type="submit" id="cl_btn2" class="btn" name="sub_btn4" >search</button>
-            <button type="button" class="btn cancel" id="bt_close1" onclick="closeForm()">&times;</button>
-        </div>
-  </form>
+        </form>
 
-  <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST">
-     <div class="pass_reset" id="pass_reset4">
-          <h2 class="title" id="Res_title1"  >choose your account</h2>
-            <?php
-                if(isset($_POST["sub_btn4"])){
-                  
-                     $query=check_forgot($_POST['srchUser'],"search");
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
+            <div class="pass_reset" id="pass_reset4">
+                <h2 class="title" id="Res_title1">choose your account</h2>
+                <?php
+                if (isset($_POST["sub_btn4"])) {
 
-                     $scr=<<<EOL
+                    $query = check_forgot($_POST['srchUser'], "search");
+
+                    $scr = <<<EOL
                      <script type="text/JavaScript">
                      console.log("hi choose");
                      openForm4();
                      </script>
                      EOL;
-                     echo $scr;
+                    echo $scr;
 
-                     $sql="SELECT * FROM registration WHERE user_name LIKE '%$query%' or user_email LIKE '%$query%'";
-                     $result=mysqli_query($connectVariable,$sql);
+                    $sql = "SELECT * FROM registration WHERE user_name LIKE '%$query%' or user_email LIKE '%$query%'";
+                    $result = mysqli_query($connectVariable, $sql);
                     echo "<div id=\"userResult\">";
-                     while($row=mysqli_fetch_assoc($result)){
-                        $id=$row['user_id'];
-                        $name=$row['user_name'];
-                        $email=$row['user_email'];
-                            $userItem=<<<EOL
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        $id = $row['user_id'];
+                        $name = $row['user_name'];
+                        $email = $row['user_email'];
+                        $userItem = <<<EOL
                                     <div class= "inputsR">
                                         <input type="radio" name="users" value="$id">Username: $name <br>Email: $email<br>
                                      </div> <br>
                                 EOL;
-                            echo $userItem;
-                     }
-                    echo"</div>";
-                 }   
-            ?>
-        <button type="submit" id="cl_btn1" class="btn" name="sub_btn1" >Submit</button>
-    </div>
-  </form>
+                        echo $userItem;
+                    }
+                    echo "</div>";
+                }
+                ?>
+                <button type="submit" id="cl_btn1" class="btn" name="sub_btn1">Submit</button>
+            </div>
+        </form>
 
-  <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" id="sendCode" method="POST">
-    <div class="pass_reset" id="pass_reset2">
-        <h2 class="title" id="Res_title2"  >Password Resetting form</h2>
-        <?php
-           
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" id="sendCode" method="POST">
+            <div class="pass_reset" id="pass_reset2">
+                <h2 class="title" id="Res_title2">Password Resetting form</h2>
+                <?php
+
                 if (isset($_POST['sub_btn1'])) {
-                    $scr=<<<EOL
+                    $scr = <<<EOL
                     <script type="text/JavaScript">
                         console.log("hi rightcode not set");
                         openForm2();
@@ -208,54 +223,54 @@ $client->addScope("profile");
                     EOL;
                     echo $scr;
                     if (isset($_POST['sub_btn1'])) {
-                        $id=$_POST['users'];
-                        $_SESSION['tempID']=$id;
+                        $id = $_POST['users'];
+                        $_SESSION['tempID'] = $id;
                     } else {
-                        $id= $_SESSION['tempID'];
+                        $id = $_SESSION['tempID'];
                     }
-                    
-                
-                    $conn = mysqli_connect('localhost', 'root', '', 'mysteriadb','3306');
-                    $sql1= "SELECT * FROM registration WHERE  user_id='$id'";
+
+
+                    $conn = mysqli_connect('localhost', 'root', '', 'mysteriadb', '3306');
+                    $sql1 = "SELECT * FROM registration WHERE  user_id='$id'";
                     $insertionResult = mysqli_query($conn, $sql1);
 
-                    $row=mysqli_fetch_assoc($insertionResult);
-                    $UserName=$row['user_name'];
-                    $email=$row['user_email'];
+                    $row = mysqli_fetch_assoc($insertionResult);
+                    $UserName = $row['user_name'];
+                    $email = $row['user_email'];
 
                     // $_SESSION['tempEmail']=$email;
                     // //sanitize form data
-                    $email = $conn-> real_escape_string($email);
+                    $email = $conn->real_escape_string($email);
                     $random = mt_rand(1111, 9999);
 
                     if (!$conn) {
                         die("The database is not connected");
                     }
                     $queryInsertion = "UPDATE registration SET code='$random' WHERE user_id='$id' ";
-                    $result=mysqli_query($conn, $queryInsertion);
-                    
-                    
-                    if (mysqli_num_rows($insertionResult)>0 && $result) {
-                          //Enable verbose debug output
-                            $mail->IsSMTP();   
-                            $mail->SMTPDebug = false;                                          //Send using SMTP
-                            $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
-                            $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-                            $mail->Username   = 'restaurantmysteria@gmail.com';                     //SMTP username
-                            $mail->Password   = 'zfahqguufmkoznks';                               //SMTP password
-                            $mail->SMTPSecure = 'tls';            //Enable implicit TLS encryption
-                            $mail->Port       = 587;     
-         
-                        
+                    $result = mysqli_query($conn, $queryInsertion);
+
+
+                    if (mysqli_num_rows($insertionResult) > 0 && $result) {
+                        //Enable verbose debug output
+                        $mail->IsSMTP();
+                        $mail->SMTPDebug = false;                                          //Send using SMTP
+                        $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
+                        $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+                        $mail->Username   = 'restaurantmysteria@gmail.com';                     //SMTP username
+                        $mail->Password   = 'zfahqguufmkoznks';                               //SMTP password
+                        $mail->SMTPSecure = 'tls';            //Enable implicit TLS encryption
+                        $mail->Port       = 587;
+
+
                         //Recipients
                         $mail->setFrom('restaurantmysteria@gmail.com', 'MYSTERIA RESTAURANT');
                         $mail->addAddress($email, $UserName);        //Add a recipient
 
-                                        
+
                         //Content
-                                $mail->isHTML(true);                                  //Set email format to HTML
-                                $mail->Subject = 'Forgot password verification code';
-                                $mail->Body = 'Here is your code '.$random.'';
+                        $mail->isHTML(true);                                  //Set email format to HTML
+                        $mail->Subject = 'Forgot password verification code';
+                        $mail->Body = 'Here is your code ' . $random . '';
                         if ($mail->send()) {
                             $_SESSION['sent2C'] = <<<eol
                                     <span id="message" style="font-size:15px; color:green;">We have sent a reset code to your email.</span><br>
@@ -265,15 +280,15 @@ $client->addScope("profile");
                                     <span id="message" style="font-size:15px; color:red;">Message could not be sent. Mailer Error: {$mail->ErrorInfo} Try again</span><br>
                                 eol;
 
-                                $sendd=<<<eol
+                            $sendd = <<<eol
                                     <script type="text/javascript">
                                     window.location.replace('http://localhost/Mysteria-main/shared/signup.php#myForm');
                                     console.log("hi mess not sent");
                                         openForm1();
                                     </script>
                                     eol;
-                                 echo $sendd;
-                                exit();
+                            echo $sendd;
+                            exit();
                         }
                     } else {
                         $_SESSION['sent'] = <<<eol
@@ -281,7 +296,7 @@ $client->addScope("profile");
                                                 There is no such user please sign up
                                             </span><br>
                                             eol;
-                            echo <<<eol
+                        echo <<<eol
                                     <script type="text/javascript">
                                          window.location.replace('http://localhost/Mysteria-main/shared/signup.php');
                                     </script>
@@ -289,201 +304,197 @@ $client->addScope("profile");
                         exit();
                     }
                 }
-            
-        ?>
-        <div class="inputs">
-        <i class="fas fa-envelope"></i>
-            <input type="number" placeholder="code" name="code">
-            </div>
-        <?php 
-                if(!isset($_SESSION['sent2C'])){
-                    $var2="";
-                }
-                else{
-                    $var2=$_SESSION['sent2C'];
+
+                ?>
+                <div class="inputs">
+                    <i class="fas fa-envelope"></i>
+                    <input type="number" placeholder="code" name="code">
+                </div>
+                <?php
+                if (!isset($_SESSION['sent2C'])) {
+                    $var2 = "";
+                } else {
+                    $var2 = $_SESSION['sent2C'];
                     unset($_SESSION['sent2C']);
                 }
                 echo $var2;
-        ?>
-        <button type="submit" id="cl_btn2" class="btn" name="sub_btn2" value="<?php $var=$_SESSION['tempID']; echo $var;?>" >Submit</button>
-        <button type="button" class="btn cancel" id="bt_close2" onclick="closeForm()">&times;</button>
-    </div>
-  </form>
-  <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST" onsubmit="return confPsd2()">
-    <div class="pass_reset" id="pass_reset3">
-            <?php
-                if(isset($_POST['sub_btn2'])){
+                ?>
+                <button type="submit" id="cl_btn2" class="btn" name="sub_btn2" value="<?php $var = $_SESSION['tempID'];
+                                                                                        echo $var; ?>">Submit</button>
+                <button type="button" class="btn cancel" id="bt_close2" onclick="closeForm()">&times;</button>
+            </div>
+        </form>
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST" onsubmit="return confPsd2()">
+            <div class="pass_reset" id="pass_reset3">
+                <?php
+                if (isset($_POST['sub_btn2'])) {
 
-                    $id=$_POST['sub_btn2'];
-                    $inputCode=check_forgot($_POST['code'],"code");
-                    $conn = mysqli_connect('localhost', 'root', '', 'mysteriadb','3306');
-                        if(!$conn)
-                        {
-                            die("The database is not connected");
-                        }
+                    $id = $_POST['sub_btn2'];
+                    $inputCode = check_forgot($_POST['code'], "code");
+                    $conn = mysqli_connect('localhost', 'root', '', 'mysteriadb', '3306');
+                    if (!$conn) {
+                        die("The database is not connected");
+                    }
 
-                        $rand= "SELECT * FROM registration WHERE user_id='$id'";
-                        $result= mysqli_query($conn,$rand);
-                        $row=mysqli_fetch_assoc($result);
-                        // $UserName=$row['user_name'];
-                        $code=$row['code'];
-                        // $email=$row['user_email'];
+                    $rand = "SELECT * FROM registration WHERE user_id='$id'";
+                    $result = mysqli_query($conn, $rand);
+                    $row = mysqli_fetch_assoc($result);
+                    // $UserName=$row['user_name'];
+                    $code = $row['code'];
+                    // $email=$row['user_email'];
 
-                    if ($inputCode===$code)
-                    {
+                    if ($inputCode === $code) {
 
-                            $_SESSION['sent2'] = <<<eol
+                        $_SESSION['sent2'] = <<<eol
                             <span id="message" style="font-size:15px; color:green;">code has been verified.</span><br>
                             eol;
-                            $scr=<<<EOL
+                        $scr = <<<EOL
                             <script type="text/JavaScript">
                             console.log("hi coderight");
                             openForm3();
                             </script>
                             EOL;
-                            echo $scr;
-                    }
-                    else
-                    {
-                            $_SESSION['sent2C'] = <<<eol
+                        echo $scr;
+                    } else {
+                        $_SESSION['sent2C'] = <<<eol
                             <span id="message" style="font-size:15px; color:red;">Wrong code please check your Email
                             </span><br>
                             eol;
-                            echo '<script type ="application/JavaScript"> 
+                        echo '<script type ="application/JavaScript"> 
                             window.location.replace("http://localhost/Mysteria-main/shared/signup.php#pass_reset2");
                             console.log("code wrong");
                             openForm2();
-                            </script>'; 
-                           exit();
+                            </script>';
+                        exit();
                     }
-
                 }
-            ?>
-        <h2 class="title" id="Res_title3"  >Password Resetting form</h2>
-           <?php if(isset($_SESSION['sent2'])){
-                    $var=$_SESSION['sent2'];
+                ?>
+                <h2 class="title" id="Res_title3">Password Resetting form</h2>
+                <?php if (isset($_SESSION['sent2'])) {
+                    $var = $_SESSION['sent2'];
                     echo $var;
                     unset($_SESSION['sent2']);
                 }
-            ?>
-            
-            <div class="inputs">
-                <i class="fas fa-envelope"></i>
-                <input type="text" placeholder="New Username" name="newUser">
-            </div>
-            <div class="inputs">
-                <i class="fas fa-lock"></i>
-                <input type="password" placeholder="New Password" name="newPassword" id="password3">
-            </div>
-            <div class="inputs">
-                <i class="fas fa-lock"></i>
-                <input type="password" placeholder="Confirm New Password" name="Password2" id="password4">
-            
-            </div>
-            <span id="msg2"></span>
-            <span style="color:red;"><?php if(isset($_SESSION['sent_forgotPN'])){
-                    $var=$_SESSION['sent_forgotPN'];
-                    echo $var;
-                    unset($_SESSION['sent_forgotPN']);
-                }?></span><br> 
-            <button type="submit" id="cl_btn3" name="sub_btn3" class="btn" value="<?php $var=$_SESSION['tempID']; echo $var;?>">Submit</button>
-        
-        </div>  
-  </form>
-  <?php
-  if (isset($_POST['sub_btn3'])) 
-  {
-      $conn = mysqli_connect('localhost', 'root', '', 'mysteriadb','3306');
-      if(!$conn){
-          die("The database is not connected");
-      }
+                ?>
 
-      $id=$_POST["sub_btn3"];
-      
-      $UserName=check_forgot($_POST["newUser"],"name");
-      $new_pass=check_forgot($_POST["newPassword"],"psd");
-      $c_pass=check_forgot($_POST["Password2"],"psd");
+                <div class="inputs">
+                    <i class="fas fa-envelope"></i>
+                    <input type="text" placeholder="New Username" name="newUser">
+                </div>
+                <div class="inputs">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" placeholder="New Password" name="newPassword" id="password3">
+                </div>
+                <div class="inputs">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" placeholder="Confirm New Password" name="Password2" id="password4">
 
-      $UserName = $conn-> real_escape_string($UserName);
-      $password = $conn-> real_escape_string($new_pass);
-      $c_pass = $conn-> real_escape_string($c_pass);
-      
+                </div>
+                <span id="msg2"></span>
+                <span style="color:red;"><?php if (isset($_SESSION['sent_forgotPN'])) {
+                                                $var = $_SESSION['sent_forgotPN'];
+                                                echo $var;
+                                                unset($_SESSION['sent_forgotPN']);
+                                            } ?></span><br>
+                <button type="submit" id="cl_btn3" name="sub_btn3" class="btn" value="<?php $var = $_SESSION['tempID'];
+                                                                                        echo $var; ?>">Submit</button>
 
-      $sql= "SELECT * FROM registration WHERE user_name = '$UserName'";
-$insertionResult3 = mysqli_query($connectVariable, $sql);
-    if(mysqli_num_rows($insertionResult3)>0){
-        $_SESSION['sent_forgotPN'] = "username is taken";
-        $err=<<<eol
+            </div>
+        </form>
+        <?php
+        if (isset($_POST['sub_btn3'])) {
+            $conn = mysqli_connect('localhost', 'root', '', 'mysteriadb', '3306');
+            if (!$conn) {
+                die("The database is not connected");
+            }
+
+            $id = $_POST["sub_btn3"];
+
+            $UserName = check_forgot($_POST["newUser"], "name");
+            $new_pass = check_forgot($_POST["newPassword"], "psd");
+            $c_pass = check_forgot($_POST["Password2"], "psd");
+
+            $UserName = $conn->real_escape_string($UserName);
+            $password = $conn->real_escape_string($new_pass);
+            $c_pass = $conn->real_escape_string($c_pass);
+
+
+            $sql = "SELECT * FROM registration WHERE user_name = '$UserName'";
+            $insertionResult3 = mysqli_query($connectVariable, $sql);
+            if (mysqli_num_rows($insertionResult3) > 0) {
+                $_SESSION['sent_forgotPN'] = "username is taken";
+                $err = <<<eol
               <script type="text/javascript">
                window.location.replace('http://localhost/Mysteria-main/shared/signup.php#pass_reset3');
                console.log("wrong name");
                     openForm3();
               </script>
               eol;
-              echo $err;
-    }else{
-        $rand= "SELECT * FROM registration WHERE user_id='$id'";
-        $result= mysqli_query($conn, $rand);
-        $row=mysqli_fetch_assoc($result);
-        $email=$row['user_email'];
-        $hash = password_hash($c_pass, PASSWORD_DEFAULT);
+                echo $err;
+            } else {
+                $rand = "SELECT * FROM registration WHERE user_id='$id'";
+                $result = mysqli_query($conn, $rand);
+                $row = mysqli_fetch_assoc($result);
+                $email = $row['user_email'];
+                $hash = password_hash($c_pass, PASSWORD_DEFAULT);
 
-        $Insertion = "UPDATE registration SET user_name='$UserName', user_password='$hash' WHERE user_email='$email' and user_id='$id'";
-        mysqli_query($conn, $Insertion);
+                $Insertion = "UPDATE registration SET user_name='$UserName', user_password='$hash' WHERE user_email='$email' and user_id='$id'";
+                mysqli_query($conn, $Insertion);
 
-        $sql= "SELECT * FROM registration where user_id='$id'";
-        $insertionResult2 = mysqli_query($conn, $sql);
-      
-        $row=mysqli_fetch_assoc($insertionResult2);
+                $sql = "SELECT * FROM registration where user_id='$id'";
+                $insertionResult2 = mysqli_query($conn, $sql);
 
-        if ($Insertion && isset($row['email_verified_at'])) {
-            $_SESSION['user']=$UserName;
-            $_SESSION['userID']=$row["user_id"];
-            $_SESSION['email']=$row["user_email"];
-            $_SESSION['user_grp']=$row['user_grp'];
-            $_SESSION['query']="";
-            $_SESSION['cartCount']=0;
-            $_SESSION['terms']=false;
-            $_SESSION['terms2']=false;
-            $session_id=session_id();
+                $row = mysqli_fetch_assoc($insertionResult2);
 
-            $sql= "SELECT * FROM registration where user_name='$UserName' and (active_sessions='$session_id' or active_sessions IS NULL or active_sessions=''  )";
-            $insertionResult2 = mysqli_query($conn, $sql);
-            $row=mysqli_fetch_assoc($insertionResult2);
-              
-            if (mysqli_num_rows($insertionResult2)==0) {
-                session_unset();
-                echo '<script type ="application/JavaScript"> alert ("this account is already logged in.");  window.location.replace("http://localhost/Mysteria-main/shared/signup.php"); </script>';
-            // echo "hi";
-            } elseif (mysqli_num_rows($insertionResult2)>0) {
-                $_SESSION['start'] = time();
-                $sql2="UPDATE registration SET active_sessions='$session_id' WHERE user_name = '$UserName'";
-                $insertion = mysqli_query($conn, $sql2);
-                if ($row['user_grp']=="admin") {
-                    echo"<script> window.location.replace('http://localhost/Mysteria-main/shared/signup.php'); </script>";
-                    header("Location: ../../admin/AdminPage.php");
-                } else {
-                    header("Location: ../../public/home/home.php");
-                }
-                exit();
-            }
-        } elseif (!isset($row['email_verified_at'])) {
-            $_SESSION['sent'] = <<<eol
+                if ($Insertion && isset($row['email_verified_at'])) {
+                    $_SESSION['user'] = $UserName;
+                    $_SESSION['userID'] = $row["user_id"];
+                    $_SESSION['email'] = $row["user_email"];
+                    $_SESSION['user_grp'] = $row['user_grp'];
+                    $_SESSION['query'] = "";
+                    $_SESSION['cartCount'] = 0;
+                    $_SESSION['terms'] = false;
+                    $_SESSION['terms2'] = false;
+                    $session_id = session_id();
+
+                    $sql = "SELECT * FROM registration where user_name='$UserName' and (active_sessions='$session_id' or active_sessions IS NULL or active_sessions=''  )";
+                    $insertionResult2 = mysqli_query($conn, $sql);
+                    $row = mysqli_fetch_assoc($insertionResult2);
+
+                    if (mysqli_num_rows($insertionResult2) == 0) {
+                        session_unset();
+                        echo '<script type ="application/JavaScript"> alert ("this account is already logged in.");  window.location.replace("http://localhost/Mysteria-main/shared/signup.php"); </script>';
+                        // echo "hi";
+                    } elseif (mysqli_num_rows($insertionResult2) > 0) {
+                        $_SESSION['start'] = time();
+                        $sql2 = "UPDATE registration SET active_sessions='$session_id' WHERE user_name = '$UserName'";
+                        $insertion = mysqli_query($conn, $sql2);
+                        if ($row['user_grp'] == "admin") {
+                            echo "<script> window.location.replace('http://localhost/Mysteria-main/shared/signup.php'); </script>";
+                            header("Location: ../../admin/AdminPage.php");
+                        } else {
+                            header("Location: ../../public/home/home.php");
+                        }
+                        exit();
+                    }
+                } elseif (!isset($row['email_verified_at'])) {
+                    $_SESSION['sent'] = <<<eol
               <span id="message" style="font-size:15px; color:red;">Please verify your account before login.</span>
               eol;
-            echo"<script> window.location.replace('http://localhost/Mysteria-main/shared/signup.php'); </script>";
-        } else {
-            $_SESSION['sent'] = <<<eol
+                    echo "<script> window.location.replace('http://localhost/Mysteria-main/shared/signup.php'); </script>";
+                } else {
+                    $_SESSION['sent'] = <<<eol
               <span id="message" style="font-size:15px; color:red;">Your Username or Password is invalid.</span>
               eol;
-            echo"<script> window.location.replace('http://localhost/Mysteria-main/shared/signup.php'); </script>";
+                    echo "<script> window.location.replace('http://localhost/Mysteria-main/shared/signup.php'); </script>";
+                }
+            }
         }
-    }
-  }
-  ?>
+        ?>
 
-    <button type="button" class="btn cancel" id="bt_close3" onclick="closeForm()">&times;</button>
-</div>
+        <button type="button" class="btn cancel" id="bt_close3" onclick="closeForm()">&times;</button>
+    </div>
     <script src="../js/sign.js"></script>
 </body>
-</html>    
+
+</html>
